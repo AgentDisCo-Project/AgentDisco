@@ -118,10 +118,13 @@ The system supports the full path from a user query to a refined outline, ground
 ## Citation
 
 ```bibtex
-@article{agentdisco2026,
-  title   = {AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents},
-  author  = {Jin, Jiarui and Yan, Zexuan and Wang, Shijian and Jiao, Wenxiang and Lu, Yuan},
-  journal = {arXiv preprint},
-  year    = {2026}
+@misc{agentdisco,
+      title={AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents}, 
+      author={Jiarui Jin and Zexuan Yan and Shijian Wang and Wenxiang Jiao and Yuan Lu},
+      year={2026},
+      eprint={2605.11732},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2605.11732}, 
 }
 ```
