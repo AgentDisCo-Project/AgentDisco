@@ -1,0 +1,91 @@
+<system_role>
+    You are an experienced research article evaluation expert. You excel at breaking down abstract evaluation dimensions (like "Insight") into actionable, clear, and task-specific criteria, assigning appropriate weights and justifications for each.
+</system_role>
+
+<user_prompt>
+    **Background**: We are evaluating a deep research article written for the following task across four dimensions: Comprehensiveness, Insight, Instruction Following, and Readability.
+    1.  **Comprehensiveness:** The breadth, depth, and relevance of information coverage.
+    2.  **Insight:** The depth, originality, logic, and value of the analysis and conclusions.
+    3.  **Instruction Following:** Whether the report accurately and completely responds to all requirements and constraints of the task.
+    4.  **Readability:** Clarity of structure, fluency of language, effectiveness of data presentation, and overall ease of understanding.
+
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    <instruction>
+        **Your Goal**: For the **Insight** dimension of this research article, develop a set of detailed, specific, and highly task-relevant evaluation criteria. You need to:
+        1.  **Analyze Task**: Deeply analyze the `<task>` to identify areas requiring in-depth analysis, logical deduction, viewpoint synthesis, or value judgment to demonstrate "insight."
+        2.  **Formulate Criteria**: Based on the analysis, propose specific criteria focusing on analytical depth, logical consistency, originality, and the value of conclusions.
+        3.  **Explain Rationale**: Provide a brief explanation (`explanation`) for each criterion, stating why it is important for assessing the insight of this `<task>`.
+            4.  **Assign Weights**: Assign a reasonable weight (`weight`) to each criterion, ensuring the sum of all criteria weights is exactly **1.0**. Weights should reflect the relative importance of each criterion in demonstrating the task's insight objectives.
+            5.  **Avoid Overlap**: Clearly focus on criteria related to the **Insight** dimension, avoiding overlap with Comprehensiveness, Instruction Following, or Readability.
+
+            **Core Requirements**:
+            1.  **Task-Centric**: Analysis, criteria, explanations, and weights must directly relate to the core requirements and characteristics of the `<task>`.
+                2.  **Beyond Surface-Level**: Criteria should assess analytical depth, logical rigor, originality of insights, and value of conclusions, not just information listing.
+                3.  **Well-Justified**: The `<analysis>` section must clearly articulate the overall thinking behind setting these criteria and weights, linking it to the `<task>`. The `explanation` for each criterion must justify its specific relevance.
+                    4.  **Reasonable Weights**: Weight allocation must be logical, reflecting the relative importance of each item within the insight dimension.
+                    5.  **Standard Format Output**: Strictly follow the example format below, first outputting the `<analysis>` text, then immediately providing the `<json_output>`.
+    </instruction>
+
+    <example_rational>
+        The following example demonstrates **how to formulate insight criteria based on task requirements**. Focus on learning the **thinking logic and analytical methods** from this example, not just imitating its content or weight values.
+    </example_rational>
+
+    <example>
+        <task>
+            "Analyze the impact of remote work trends on commercial real estate in major US cities and recommend investment strategies."
+        </task>
+
+        <output>
+            <analysis>
+                To evaluate the insight of a report on "the impact of remote work on commercial real estate (CRE) in major US cities and recommended investment strategies," the focus must be on the depth of analysis, logical strength, and the value of its conclusions, moving beyond simple data presentation. The task's core involves analyzing complex market shifts and providing strategic investment advice. Thus, insight is demonstrated by identifying key drivers of change, establishing rigorous analytical frameworks, performing multi-faceted risk/reward assessments for investment strategies, and offering forward-looking, actionable recommendations.
+
+                Evaluation criteria should emphasize:
+                1.  **Identification and Analysis of Core Drivers**: Not just listing factors, but deeply analyzing their mechanisms and relative importance in reshaping CRE markets.
+                2.  **Sophistication of Impact Analysis**: Assessing whether the analysis uncovers non-obvious impacts or second-order effects of remote work on different CRE segments.
+                3.  **Logical Rigor of Investment Recommendations**: Evaluating if investment strategies are well-reasoned, clearly linked to the impact analysis, and consider potential future scenarios.
+                4.  **Depth of Risk-Return Assessment**: Examining if the report provides a nuanced understanding of the risks and potential returns associated with each recommended strategy, rather than superficial assessments.
+                5.  **Originality and Strategic Value of Insights**: Whether the report offers unique perspectives, challenges conventional wisdom, or provides genuinely valuable strategic guidance that goes beyond common knowledge.
+                6.  **Future Outlook and Adaptability**: Assessing if the report considers the long-term evolution of remote work and its implications, and if investment strategies are adaptable to changing conditions.
+
+                Weight allocation should favor the depth of impact analysis and the strategic value of investment recommendations, as these are central to demonstrating insight. The ability to identify core drivers and provide a nuanced risk-return assessment are also highly important.
+            </analysis>
+            <json_output>
+                [
+                {
+                "criterion": "Depth of Analysis of Core Drivers and Mechanisms",
+                "explanation": "Assesses if the article not only identifies key drivers (e.g., technology, corporate policy, employee preference) of remote work's impact on CRE, but deeply analyzes their interplay and causal mechanisms, rather than a superficial listing.",
+                "weight": 0.20
+                },
+                {
+                "criterion": "Sophistication in Uncovering CRE Market Impacts",
+                "explanation": "Evaluates if the analysis goes beyond obvious impacts to uncover subtle or second-order effects on CRE demand, valuation, and use in different sectors (office, retail, etc.) and geographies.",
+                "weight": 0.20
+                },
+                {
+                "criterion": "Logical Coherence and Justification of Investment Strategies",
+                "explanation": "Assesses if the recommended investment strategies are logically derived from the impact analysis, are well-justified with supporting evidence, and consider potential market dynamics.",
+                "weight": 0.20
+                },
+                {
+                "criterion": "Nuance in Risk-Return Analysis for Investments",
+                "explanation": "Evaluates the depth of the risk-return assessment for proposed strategies, considering factors like market volatility, liquidity, holding periods, and specific risks associated with CRE in a post-remote work era.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Originality and Strategic Value of Recommendations",
+                "explanation": "Assesses whether the article offers novel, actionable insights or investment strategies that provide a distinct advantage or perspective, moving beyond generic advice.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Forward-Looking Perspective and Consideration of Long-Term Trends",
+                "explanation": "Evaluates if the article incorporates a forward-looking view, anticipating future shifts in remote work and their sustained impact on CRE, and how investment strategies might adapt.",
+                "weight": 0.10
+                }
+                ]
+            </json_output>
+        </output>
+    </example>
+</user_prompt>

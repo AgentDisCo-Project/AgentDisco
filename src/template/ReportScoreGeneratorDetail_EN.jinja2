@@ -1,0 +1,69 @@
+<system_role>You are a strict, meticulous, and objective research article evaluation expert. You excel at using specific assessment criteria to thoroughly evaluate research articles, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+    **Task Background**
+    There is a deep research task, and you need to evaluate a research article written for this task. We will assess the article across four dimensions: Comprehensiveness, Insight, Instruction Following, and Readability. The content is as follows:
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    **Article to Evaluate**
+    <target_article>
+        "{{ report }}"
+    </target_article>
+
+    **Evaluation Criteria**
+    Now, you need to evaluate this article based on the following **evaluation criteria list**, providing analysis and scoring each on a scale of 0-10. Each criterion includes an explanation, please understand carefully.
+
+    <criteria_list>
+        {{ criteria_list }}
+    </criteria_list>
+
+    <Instruction>
+        **Your Task**
+        Please strictly evaluate `<target_article>` based on **each criterion** in the `<criteria_list>`. You need to:
+        1.  **Analyze Each Criterion**: Consider how the article fulfills the requirements of each criterion.
+        2.  **Analysis and Evaluation**: Analyze the article's performance on each criterion, referencing the content and criterion explanation, noting strengths and weaknesses.
+        3.  **Score**: Based on your analysis, score the article on each criterion (0-10 points).
+
+        **Scoring Rules**
+        For each criterion, score the article on a scale of 0-10 (continuous values). The score should reflect the quality of performance on that criterion:
+        *   0-2 points: Very poor performance. Almost completely fails to meet the criterion requirements.
+        *   2-4 points: Poor performance. Minimally meets the criterion requirements with significant deficiencies.
+        *   4-6 points: Average performance. Basically meets the criterion requirements, neither good nor bad.
+        *   6-8 points: Good performance. Largely meets the criterion requirements with notable strengths.
+        *   8-10 points: Excellent/outstanding performance. Fully meets or exceeds the criterion requirements.
+
+        **Output Format Requirements**
+        Please **strictly** follow the `<output_format>` below for each criterion evaluation. **Do not include any other unrelated content, introduction, or summary**. Start with "Standard 1" and proceed sequentially through all criteria:
+    </Instruction>
+
+    <output_format>
+        {
+        "comprehensiveness": [
+        {
+        "criterion": [Text content of the first comprehensiveness evaluation criterion],
+        "analysis": [Analysis],
+        "target_score": [Continuous score 0-10]
+        },
+        {
+        "criterion": [Text content of the second comprehensiveness evaluation criterion],
+        "analysis": [Analysis],
+        "target_score": [Continuous score 0-10]
+        },
+        ...
+        ],
+        "insight": [
+        {
+        "criterion": [Text content of the first insight evaluation criterion],
+        "analysis": [Analysis],
+        "target_score": [Continuous score 0-10]
+        },
+        ...
+        ],
+        ...
+        }
+    </output_format>
+
+    Now, please evaluate the article based on the research task and criteria, providing detailed analysis and scores according to the requirements above. Ensure your output follows the specified `<output_format>` and that the JSON format is parsable, with all characters that might cause JSON parsing errors properly escaped.
+</user_prompt>

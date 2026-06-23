@@ -1,0 +1,137 @@
+
+run_agent.job_name = "TEST_FINAL"
+run_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0323/test_cases.jsonl"
+run_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.download_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.use_debug = True
+
+run_batch_agent.job_name = "TEST_FINAL_BENCH"
+run_batch_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0323/test_cases.jsonl"
+run_batch_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_batch_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_batch_agent.max_concurrent = 1
+
+run_agent.skip_query_miner = True
+run_agent.skip_outline_generator = True
+run_agent.skip_intent_planner = True
+run_agent.force_restart_outline_generator = False
+run_agent.skip_report_writer = True
+run_agent.skip_report_polish = False
+run_agent.skip_note_selector = True
+run_agent.skip_image_selector = True
+run_agent.skip_html_render = True
+run_agent.skip_slide_content_planner = True
+run_agent.skip_slide_image_render = True
+run_agent.skip_slide_render = True
+run_agent.skip_slide_video_render = False
+run_agent.disable_query_miner = False
+run_agent.disable_intent_planner = False
+run_agent.disable_images = False
+run_agent.disable_multi_images = False
+run_agent.disable_comment = True
+run_agent.disable_video = True
+run_agent.disable_outline_generator = False
+run_agent.disable_report_writer = False
+run_agent.disable_report_polish = True
+run_agent.disable_note_selector = False
+run_agent.disable_image_selector = False
+run_agent.disable_html_render = False
+run_agent.disable_slide_content_planner = False
+run_agent.disable_slide_image_render = False
+run_agent.disable_slide_render = False
+run_agent.disable_slide_video_render = False
+run_agent.render_with_image = True
+run_agent.use_zh = True
+run_agent.use_input_query = True
+run_agent.include_summary = False
+run_agent.require_cache_data = True
+run_agent.use_polish_before_render = False
+run_agent.use_evidence_as_key = False
+run_agent.use_hierarchical_writer = True
+run_agent.max_outline_generator_turns = 10
+run_agent.min_outline_generator_turns = 1
+run_agent.outline_judge_threshold = 8.7
+
+IntentPlanner.model_name = "gemini-3-flash"
+DisentangledOutlineJudgeBlueprint.model_name = "gemini-3-flash"
+DisentangledOutlineJudgeBlueprint.llm_filter_model_name = "gemini-3-flash"
+DisentangledOutlineJudgeBlueprint.max_retries = 10
+DisentangledOutlineJudgeBlueprint.retry_delay = 1
+DisentangledOutlineJudgeBlueprint.search_engine = "xiaohongshu"
+DisentangledOutlineJudgeBlueprint.num_searches = 10
+DisentangledOutlineJudgeBlueprint.top_k = 500
+DisentangledOutlineJudgeBlueprint.return_score = True
+DisentangledOutlineJudgeBlueprint.use_flash_filter = False
+DisentangledOutlineJudgeBlueprint.include_prev_query = True
+DisentangledOutlineJudgeBlueprint.add_origin_query = False
+
+DisentangledOutlineGeneratorBlueprint.model_name = "gemini-3-flash"
+DisentangledOutlineGeneratorBlueprint.max_retries = 10
+DisentangledOutlineGeneratorBlueprint.retry_delay = 1
+DisentangledOutlineGeneratorBlueprint.include_prev_outline = True
+DisentangledOutlineGeneratorBlueprint.include_prev_judge = True
+DisentangledOutlineGeneratorBlueprint.use_summary = True
+
+MemoryBankManager.model_name = "gpt-oss-120b"
+MemoryBankManager.max_retries = 10
+MemoryBankManager.retry_delay = 1
+MemoryBankManager.include_outline = False
+MemoryBankManager.combine_judge_and_evidence = True
+JudgeAndEvidenceQAGenerator.top_k = 500
+JudgeAndEvidenceQAGenerator.judge_thresh = 0.2
+JudgeAndEvidenceQAGenerator.max_retries_jina = 3
+SummaryQAGenerator.max_retries_jina = 3
+SummaryQAGenerator.judge_thresh = 0.1
+JudgeAndEvidenceQAGenerator.max_retries = 5
+GoogleTextImageSearch.fetch_detail = False
+SandboxSearch.reference_citation_path = "./sandbox/deep_research_bench_zh_citations.jsonl"
+
+ReportWriter.model_name = "gemini-3-flash"
+ReportWriter.max_retries = 50
+ReportWriter.retry_delay = 1
+ReportWriter.use_mask_evidence = False
+
+NoteSelector.model_name = "gemini-3-flash"
+ImageSelector.model_name = "gemini-3-flash"
+HTMLRender.model_name = "gemini-3-flash"
+
+ReferenceRender.use_evidence_as_key = False
+ReportPolish.model_name = "gemini-3-flash"
+ReportPolish.need_fact = False
+ReportPolish.need_race = False
+
+PosterSlideContentGenerator.model_name = "gemini-3-flash"
+PosterSlideContentGenerator.output_type = "xhs_slides"
+PosterSlideContentGenerator.density_type = "medium"
+PosterSlideContentGenerator.output_page = "short"
+
+SlideImageRender.model_name = "gemini-image"
+SlideImageRender.style = "handdrawn"
+SlideImageRender.orientation = "portrait"
+SlideImageRender.aspect_ratio = "9:16"
+SlideImageRender.max_retries = 5
+SlideImageRender.system_template_dir = "./template"
+SlideImageRender.system_template_en_file = "SlideImageRender_EN.jinja2"
+SlideImageRender.system_template_zh_file = "SlideImageRender_ZH.jinja2"
+
+SlideRender.model_name = "gemini-3-flash"
+
+SlideVideoRender.model_name = "gemini-3-flash"
+SlideVideoRender.tts_model_name = "Qwen3-TTS-12Hz-1.7B-CustomVoice"
+SlideVideoRender.tts_voice = "Vivian"
+SlideVideoRender.system_template_dir = "./template"
+SlideVideoRender.system_template_en_file = "SlideVideoRender_EN.jinja2"
+SlideVideoRender.system_template_zh_file = "SlideVideoRender_ZH.jinja2"
+
+QwenTTSDeploy.model_name = "Qwen3-TTS-12Hz-1.7B-CustomVoice"
+QwenTTSDeploy.model_path = "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
+QwenTTSDeploy.voice = "Vivian"
+QwenTTSDeploy.language = "Chinese"
+QwenTTSDeploy.server_port = 8091
+QwenTTSDeploy.server_base_url = "http://localhost:8091/v1"
+QwenTTSDeploy.server_api_key = "EMPTY"
+QwenTTSDeploy.server_python = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/tts_venv/bin/python"
+QwenTTSDeploy.gpu_memory_utilization = 0.9
+QwenTTSDeploy.startup_timeout = 300
+QwenTTSDeploy.auto_start = True

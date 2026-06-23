@@ -1,0 +1,51 @@
+run_agent.job_name = ""
+run_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.use_debug = False
+
+run_agent.skip_query_miner = True
+run_agent.skip_outline_generator = True
+run_agent.skip_report_writer = True
+run_agent.skip_report_polish = False
+run_agent.disable_outline_generator = False
+run_agent.disable_report_writer = False
+run_agent.disable_report_polish = True
+run_agent.use_zh = True
+run_agent.require_cache_data = True
+run_agent.use_polish_before_render = False
+run_agent.use_hierarchical_writer = False
+run_agent.max_outline_generator_turns = 10
+run_agent.min_outline_generator_turns = 1
+run_agent.outline_judge_threshold = 8
+
+DisentangledOutlineJudge.model_name = "gemini-2.5-pro"
+DisentangledOutlineJudge.llm_filter_model_name = "gemini-2.5-pro"
+DisentangledOutlineJudge.max_retries = 50
+DisentangledOutlineJudge.retry_delay = 1
+DisentangledOutlineJudge.search_engine = "xiaohongshu"
+DisentangledOutlineJudge.num_searches = 10
+DisentangledOutlineJudge.top_k = 50
+DisentangledOutlineJudge.return_score = True
+DisentangledOutlineJudge.use_flash_filter = False
+DisentangledOutlineJudge.include_prev_query = True
+DisentangledOutlineJudge.add_origin_query = False
+
+DisentangledOutlineGenerator.model_name = "gemini-2.5-pro"
+DisentangledOutlineGenerator.max_retries = 50
+DisentangledOutlineGenerator.retry_delay = 1
+DisentangledOutlineGenerator.include_prev_outline = True
+DisentangledOutlineGenerator.include_prev_judge = True
+DisentangledOutlineGenerator.include_summary = False
+
+MemoryBankManager.model_name = "gemini-2.5-pro"
+MemoryBankManager.max_retries = 5
+MemoryBankManager.retry_delay = 1
+MemoryBankManager.include_outline = False
+
+ReportWriter.model_name = "gemini-2.5-pro"
+ReportWriter.max_retries = 50
+ReportWriter.retry_delay = 1
+
+ReportPolish.model_name = "gemini-2.5-pro"
+ReportPolish.need_fact = False
+ReportPolish.need_race = False

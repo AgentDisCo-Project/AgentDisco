@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 模版 · Refine（含引用区）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #111827;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .highlight {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.06));
+        }
+        .link-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 9999px;
+            background: #F3F4F6;
+            color: #111827;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .link-pill:hover { background: #E5E7EB; }
+        /* Inline citations */
+        .cite-ref {
+            color: #4F46E5;
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8 space-y-6">
+        <!-- 标题区 -->
+        <div class="card p-8 text-center">
+            <div class="absolute inset-0 highlight"></div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 relative">项目/论文主标题</h1>
+            <p class="text-lg text-gray-500 relative">副标题或一句话摘要</p>
+        </div>
+
+        <!-- 附加信息区：方法/指标/亮点 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3"><i class="fa-solid fa-flask mr-2 text-blue-500"></i>方法与数据</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>方法概览与关键步骤<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a></li>
+                    <li>数据来源与规模</li>
+                    <li>实现细节与配置</li>
+                </ul>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3"><i class="fa-solid fa-chart-line mr-2 text-green-500"></i>指标与结果</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>主要指标（准确率、召回率等）</li>
+                    <li>对比实验与消融分析</li>
+                    <li>可视化图表（柱状/雷达）</li>
+                </ul>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3"><i class="fa-solid fa-star mr-2 text-amber-500"></i>亮点与贡献</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>方法创新点</li>
+                    <li>工程可落地性</li>
+                    <li>开源与社区价值</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

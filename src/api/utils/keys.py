@@ -1,0 +1,28 @@
+import os
+import json
+
+
+DIRECTLLM_API_KEY = os.environ.get('DIRECTLLM_API_KEY', "")
+BOCHA_API_KEY = os.environ.get('BOCHA_API_KEY', "")
+SEARCH_TEXT_BUSINESS_TYPE = os.environ.get('SEARCH_TEXT_BUSINESS_TYPE', "")
+COS_SECRET_ID = os.environ.get('COS_SECRET_ID', "")
+COS_SECRET_KEY = os.environ.get('COS_SECRET_KEY', "")
+BUCKET_KEY = os.environ.get('BUCKET_KEY', "")
+SEARCH_IMAGE_SCENE_TYPE = os.environ.get("SEARCH_IMAGE_SCENE_TYPE", "")
+SEARCH_IMAGE_SOURCE_TYPE = os.environ.get("SEARCH_IMAGE_SOURCE_TYPE", "")
+
+DIRECTLLM_API_KEY_USER = os.environ.get("DIRECTLLM_API_KEY_USER", "{}")
+DIRECTLLM_API_KEY_USER = json.loads(DIRECTLLM_API_KEY_USER)
+DIRECTLLM_API_KEY_PROGRAM = os.environ.get("DIRECTLLM_API_KEY_PROGRAM", "{}")
+DIRECTLLM_API_KEY_PROGRAM = json.loads(DIRECTLLM_API_KEY_PROGRAM)
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GOOGLE_SEARCH_API_KEY = os.environ.get("GOOGLE_SEARCH_API_KEY", "")
+BAIDU_SEARCH_IMAGE_KEY = os.environ.get("BAIDU_SEARCH_IMAGE_KEY", "")
+BAIDU_SEARCH_IMAGE_API_KEY = os.environ.get("BAIDU_SEARCH_IMAGE_API_KEY", "")
+BAIDU_SEARCH_IMAGE_SECRET_KEY = os.environ.get("BAIDU_SEARCH_IMAGE_SECRET_KEY", "")
+SERP_API_KEY = os.environ.get("SERP_API_KEY", "")
+
+JINA_API_KEY = os.environ.get("JINA_API_KEY", "")
+JINA_API_KEYS = os.environ.get("JINA_API_KEYS", "{}")
+JINA_API_KEYS = json.loads(JINA_API_KEYS)

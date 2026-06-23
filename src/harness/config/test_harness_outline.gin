@@ -1,0 +1,86 @@
+# ==========================================
+# Search Agent Test Harness - 中文评估配置（第二轮优化版）
+# ==========================================
+
+# ------------------------------------------
+# 基础运行配置
+# ------------------------------------------
+run_agent.job_name = "TEST_HARNESS_ZH_V2"
+run_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0408/md_data.jsonl"
+run_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.output_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/outs"
+run_agent.use_zh = True
+run_agent.use_debug = True
+
+# ------------------------------------------
+# 模型配置
+# ------------------------------------------
+
+# 意图规划器
+IntentPlanner.model_name = "gemini-3-flash"
+
+# 大纲评判服务 - 第二轮优化参数
+DisentangledOutlineJudgeBlueprintAPI.model_name = "gemini-3-flash"
+DisentangledOutlineJudgeBlueprintAPI.use_zh = True
+
+# 评分阈值配置
+DisentangledOutlineJudgeBlueprintAPI.outline_judge_threshold = 8.5
+DisentangledOutlineJudgeBlueprintAPI.max_outline_generator_turns = 3
+DisentangledOutlineJudgeBlueprintAPI.min_outline_generator_turns = 1
+
+# 迭代停止策略配置
+DisentangledOutlineJudgeBlueprintAPI.rating_volatility_threshold = 0.3
+DisentangledOutlineJudgeBlueprintAPI.rating_improvement_threshold = 0.2
+DisentangledOutlineJudgeBlueprintAPI.enable_rating_calibration = True
+
+# 首轮评分优化（避免首轮评分过低）
+DisentangledOutlineJudgeBlueprintAPI.first_round_rating_boost = 0.5
+
+# 大纲和搜索词生成配置
+DisentangledOutlineJudgeBlueprintAPI.use_response_style = True
+DisentangledOutlineJudgeBlueprintAPI.max_blueprints_len = 10
+DisentangledOutlineJudgeBlueprintAPI.min_blueprints_len = 5
+DisentangledOutlineJudgeBlueprintAPI.max_query_len = 30
+DisentangledOutlineJudgeBlueprintAPI.min_query_len = 10
+DisentangledOutlineJudgeBlueprintAPI.min_query_per_blueprint = 2
+DisentangledOutlineJudgeBlueprintAPI.enable_query_quality_check = True
+
+# 搜索配置
+DisentangledOutlineJudgeBlueprintAPI.search_engine = "google"
+DisentangledOutlineJudgeBlueprintAPI.num_searches = 10
+DisentangledOutlineJudgeBlueprintAPI.top_k = 50
+DisentangledOutlineJudgeBlueprintAPI.need_filter = False
+DisentangledOutlineJudgeBlueprintAPI.use_evidence_as_key = False
+DisentangledOutlineJudgeBlueprintAPI.add_origin_query = True
+
+# 搜索查询多样性评判
+JudgeSearchQueryDiversityAPI.model_name = "gemini-3-flash"
+JudgeSearchQueryDiversityAPI.use_zh = True
+
+# 摘要生成服务
+SummaryQAGeneratorAPI.model_name = "gpt-oss-120b"
+SummaryQAGeneratorAPI.use_zh = True
+SummaryQAGeneratorAPI.max_summary_len = 2048
+SummaryQAGeneratorAPI.max_concurrent = 50
+SummaryQAGeneratorAPI.judge_thresh = 0.1
+SummaryQAGeneratorAPI.include_user_query = False
+SummaryQAGeneratorAPI.include_outline = True
+SummaryQAGeneratorAPI.include_search_query = True
+SummaryQAGeneratorAPI.include_blueprint = True
+
+# ------------------------------------------
+# 通用模型参数
+# ------------------------------------------
+DisentangledOutlineJudgeBlueprintAPI.max_retries = 5
+DisentangledOutlineJudgeBlueprintAPI.retry_delay = 3
+DisentangledOutlineJudgeBlueprintAPI.use_api_key = True
+
+JudgeSearchQueryDiversityAPI.max_retries = 5
+JudgeSearchQueryDiversityAPI.retry_delay = 3
+JudgeSearchQueryDiversityAPI.use_api_key = True
+
+SummaryQAGeneratorAPI.max_retries = 5
+SummaryQAGeneratorAPI.max_retries_jina = 1
+SummaryQAGeneratorAPI.retry_delay = 3
+SummaryQAGeneratorAPI.use_api_key = True

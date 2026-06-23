@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────
+# eval_batch_from_query 参数
+# ─────────────────────────────────────────────
+eval_batch_from_query.job_name           = "0455_EVAL_TEST"
+eval_batch_from_query.cache_dir          = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_batch_from_query.log_dir            = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+eval_batch_from_query.use_zh             = False
+eval_batch_from_query.need_pairwise      = True
+eval_batch_from_query.require_cache_data = True
+eval_batch_from_query.max_concurrent     = 10
+eval_batch_from_query.query_file        = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/deep_consult_en_debug.jsonl"
+eval_batch_from_query.backfill_folder   = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0401_0"
+eval_batch_from_query.references_folder = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/deep_consult_en_refereneces"
+eval_batch_from_query.output_path       = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/dev/0407/ragengine/cache"
+
+# ─────────────────────────────────────────────
+# eval_workflow 参数（单条 / 被 batch 调用时均生效）
+# ─────────────────────────────────────────────
+eval_workflow.job_name           = "0225_EVAL_GEMINI_TEST"
+eval_workflow.cache_dir          = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_workflow.log_dir            = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+eval_workflow.use_zh             = False
+eval_workflow.need_pairwise      = True
+eval_workflow.require_cache_data = True
+
+# ─────────────────────────────────────────────
+# eval_batch_workflow 参数（原有 batch 模式，保持不动）
+# ─────────────────────────────────────────────
+eval_batch_workflow.job_name           = "0225_EVAL_GEMINI_TEST"
+eval_batch_workflow.log_dir            = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+eval_batch_workflow.cache_dir          = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_batch_workflow.max_concurrent     = 10
+eval_batch_workflow.require_cache_data = True
+# eval_batch_workflow.input_path        = "/data/input.jsonl"
+
+# ─────────────────────────────────────────────
+# 模型配置
+# ─────────────────────────────────────────────
+ConsultScoreGenerator.model_name = "gemini-3-flash"

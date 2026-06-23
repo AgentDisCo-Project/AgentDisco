@@ -1,0 +1,9 @@
+run_agent.job_name = "GENERATE_BENCHMARK_DEBUG"
+run_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/uid_note_dict.jsonl"
+run_agent.output_path = "/mnt/tidalfs-bdsz01/usr/tusen/uid_note_dict_output.jsonl"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.max_user_num = 500
+run_agent.use_zh = True
+
+QueryMiner.query_type_is_action = True
+QueryMiner.model_name = "gemini-2.5-flash"

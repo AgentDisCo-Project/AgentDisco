@@ -1,0 +1,33 @@
+<system_role>You are a strict, meticulous, and objective research article evaluation expert. You excel at using specific assessment criteria to thoroughly evaluate research articles, providing precise scores and clear justifications.</system_role>
+
+<user_prompt>
+    **Task Background**
+    There is a deep research task, and you need to evaluate a research article written for this task.
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    **Article to Evaluate**
+    <target_article>
+        "{{ report }}"
+    </target_article>
+
+    <Instruction>
+        **Your Task**
+        Please evaluate the overall quality of the above `<target_article>` as a response to `<task>`.
+
+        Please provide an overall score between 0 and 10. Also, provide a brief justification for your score.
+
+        **Output Format Requirements**
+        Please **strictly** follow the `<output_format>` below for your evaluation result. **Do not include any other unrelated content, introduction, or summary**.
+    </Instruction>
+
+    <output_format>
+        {
+        "overall_score": [Continuous score 0-10],
+        "justification": "[Scoring justification]"
+        }
+    </output_format>
+
+    Now, please evaluate the article based on the task and provide your score and justification according to the specified format. Ensure your output is valid JSON format and escape any special characters as needed.
+</user_prompt>

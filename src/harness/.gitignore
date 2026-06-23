@@ -1,0 +1,86 @@
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# ==========================================
+# IDE
+# ==========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ==========================================
+# Project Specific
+# ==========================================
+
+# API Keys - 永远不要提交真实密钥！
+api/utils/keys.env
+*.env
+!.env.example
+
+# Cache and logs
+cache/
+logs/
+*.log
+.cache/
+
+# Output files
+output/
+outs/
+results/
+
+# Data files (可能包含敏感信息)
+data/
+*.jsonl
+*.json
+!config/*.json
+!template/*.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Model checkpoints and large files
+*.pkl
+*.pth
+*.bin
+*.ckpt
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/

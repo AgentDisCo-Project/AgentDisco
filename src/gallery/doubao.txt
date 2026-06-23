@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG技术应用场景适用性分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">   
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .highlight-gradient-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.05));
+        }
+        .highlight-gradient-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0.05));
+        }
+        .highlight-gradient-purple {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0), rgba(168, 85, 247, 0.05));
+        }
+        .highlight-gradient-amber {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0), rgba(245, 158, 11, 0.05));
+        }
+        .highlight-gradient-rose {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0), rgba(244, 63, 94, 0.05));
+        }
+        .highlight-gradient-cyan {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0), rgba(6, 182, 212, 0.05));
+        }
+        /* Inline citations */
+        .cite-ref {
+            color: #3B82F6;
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 主标题卡片 -->
+            <div class="card md:col-span-4 p-8 flex flex-col justify-center items-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 z-10">RAG技术应用场景适用性分析报告</h1>
+                <p class="text-xl text-gray-500 font-medium z-10">检索增强生成技术的全面评估与实践指南</p>
+            </div>
+ 
+            <!-- RAG概述卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-microchip text-3xl text-green-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">RAG技术概述</h2>
+                </div>
+                <p class="text-gray-600 mb-4">检索增强生成（RAG）是一种结合检索和生成技术的模型架构<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a>，通过将外部数据检索融入大语言模型的生成过程，有效解决传统LLM在知识更新、语义对齐和复杂任务处理等方面的关键挑战。</p>
+                <div class="mt-auto pt-4">
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fa-solid fa-lightbulb mr-2"></i>
+                        <span>核心价值：赋予生成式AI信息检索能力，使用指定文件增强模型回答</span>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- RAG架构演进卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-layer-group text-3xl text-purple-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">架构演进</h2>
+                </div>
+                <div class="space-y-3 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mr-3"></div>
+                        <span class="text-gray-700 font-medium">Naive RAG：基础三阶段架构</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mr-3"></div>
+                        <span class="text-gray-700 font-medium">Advanced RAG：增加预/后检索处理</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mr-3"></div>
+                        <span class="text-gray-700 font-medium">Modular RAG：模块化可扩展架构</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-purple-400 mr-3"></div>
+                        <span class="text-gray-700 font-medium">Agentic RAG：智能体驱动架构</span>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 评估指标卡片 -->
+            <div class="card md:col-span-4 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-amber"></div>
+                <div class="flex items-center mb-6">
+                    <i class="fa-solid fa-chart-line text-3xl text-amber-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">RAG技术评估指标体系</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">检索质量评估</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 精确度（Precision）</li>
+                            <li>• 召回率（Recall）</li>
+                            <li>• F1-score</li>
+                            <li>• 平均准确率（AP）</li>
+                            <li>• 平均平均准确率（MAP）</li>
+                            <li>• 平均倒数排名（MRR）</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">生成质量评估</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 忠实度（Faithfulness）</li>
+                            <li>• 相关性（Relevance）</li>
+                            <li>• 事实准确性</li>
+                            <li>• BLEU分数</li>
+                            <li>• ROUGE分数</li>
+                            <li>• BERTScore</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">端到端性能评估</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 响应时间</li>
+                            <li>• 系统吞吐量</li>
+                            <li>• 成本效益</li>
+                            <li>• 上下文相关性</li>
+                            <li>• 上下文召回率</li>
+                            <li>• 利用率</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 2024-2025年趋势卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-cyan"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-rocket text-3xl text-cyan-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">2024-2025年发展趋势</h2>
+                </div>
+                <div class="space-y-4 mb-4">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check-circle text-cyan-500 mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-medium text-gray-800">混合搜索技术崛起</h4>
+                            <p class="text-sm text-gray-600">BM25与向量搜索结合成为标配，GraphRAG聚焦动态更新</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check-circle text-cyan-500 mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-medium text-gray-800">多模态RAG快速发展</h4>
+                            <p class="text-sm text-gray-600">RAG 2.0支持图像/音频处理，45%企业已部署RAG系统</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check-circle text-cyan-500 mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Agentic RAG架构普及</h4>
+                            <p class="text-sm text-gray-600">调度智能体协调多模块，端到端轻量化RAG芯片嵌入物联网</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 企业知识管理场景卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-building text-3xl text-blue-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">企业知识管理场景</h2>
+                </div>
+                <p class="text-gray-600 mb-4">RAG技术在企业知识管理中展现出强大的多源数据整合能力，能够对企业沉淀的静态知识进行体系化梳理，同时通过实时接口接入业务系统的动态数据。</p>
+                <div class="grid grid-cols-2 gap-4 mt-auto">
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-lg font-bold text-blue-600">95%+</div>
+                        <div class="text-sm text-gray-600">多模态格式解析率</div>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <div class="text-lg font-bold text-blue-600">全类型</div>
+                        <div class="text-sm text-gray-600">支持PDF、表格等</div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 客户服务场景卡片 -->
+            <div class="card md:col-span-3 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-headset text-3xl text-green-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">客户服务场景</h2>
+                </div>
+                <p class="text-gray-600 mb-6">RAG技术在客户服务场景中能够快速抓取知识库中与客户咨询相关的信息，并生成精准回复，同时作为企业内部的知识共享平台，帮助员工迅速获取所需信息。</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/50 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-robot text-4xl text-green-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">智能客服机器人</h3>
+                        <p class="text-sm text-gray-600">7×24小时个性化服务，多渠道接入</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-user-tie text-4xl text-green-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">增强型坐席助手</h3>
+                        <p class="text-sm text-gray-600">实时提供知识支持，提升服务效率</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-comments text-4xl text-green-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">多轮对话管理</h3>
+                        <p class="text-sm text-gray-600">维护对话历史，理解上下文关系</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 客户服务效果提升图表卡片 -->
+            <div class="card md:col-span-1 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">应用RAG后的效果提升</h3>
+                <div class="flex-grow h-48">
+                    <canvas id="customerServiceChart"></canvas>
+                </div>
+            </div>
+ 
+            <!-- 医疗场景卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-rose"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-heart-pulse text-3xl text-rose-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">医疗场景</h2>
+                </div>
+                <p class="text-gray-600 mb-4">医疗场景是RAG技术应用中最具挑战性和价值的领域之一，其核心特点是对准确性、可靠性和合规性的极高要求。</p>
+                <div class="space-y-3">
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <h4 class="font-medium text-gray-800 mb-1">临床决策支持</h4>
+                        <p class="text-sm text-gray-600">基于症状表现检索诊断和治疗建议，提升诊断准确率</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <h4 class="font-medium text-gray-800 mb-1">智能问诊系统</h4>
+                        <p class="text-sm text-gray-600">多轮追问补充关键信息，推荐专科分诊</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-3">
+                        <h4 class="font-medium text-gray-800 mb-1">多模态电子健康记录分析</h4>
+                        <p class="text-sm text-gray-600">处理文本、图像、数值等多种医疗数据</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 医疗场景准确率卡片 -->
+            <div class="card md:col-span-2 p-8 flex flex-col items-center justify-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-rose"></div>
+                <i class="fa-solid fa-microscope text-5xl text-rose-500 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">医疗RAG模型准确率</h3>
+                <div class="text-5xl font-extrabold text-rose-600 mb-2">96.4%</div>
+                <p class="text-gray-600">基于GPT-4的LLM-RAG模型在术前评估中的准确率，显著优于人工生成的响应（86.6%）</p>
+            </div>
+ 
+            <!-- 教育场景卡片 -->
+            <div class="card md:col-span-4 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-amber"></div>
+                <div class="flex items-center mb-6">
+                    <i class="fa-solid fa-graduation-cap text-3xl text-amber-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">教育场景</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/50 rounded-lg p-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">个性化学习资源推荐</h3>
+                        <p class="text-gray-600 text-sm mb-4">RAG算法通过分析学生的学习历史、测试成绩、学习行为等多源数据，精准把握学生的知识掌握情况和学习需求，从海量资源中检索并推荐最适合的内容。</p>
+                        <div class="flex items-center text-amber-600">
+                            <i class="fa-solid fa-user-graduate mr-2"></i>
+                            <span class="text-sm font-medium">因材施教</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">智能答疑与辅导</h3>
+                        <p class="text-gray-600 text-sm mb-4">利用预训练语言模型理解问题语义，从教育知识库中检索相关知识，生成准确、易懂的解答，并能根据学生后续追问提供更深入的辅导。</p>
+                        <div class="flex items-center text-amber-600">
+                            <i class="fa-solid fa-comments-dollar mr-2"></i>
+                            <span class="text-sm font-medium">即时响应</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">动态学习路径规划</h3>
+                        <p class="text-gray-600 text-sm mb-4">实时跟踪学生学习进度和知识掌握变化，动态调整学习路径，为学习困难的学生提供基础内容，为表现优秀的学生推荐挑战性内容。</p>
+                        <div class="flex items-center text-amber-600">
+                            <i class="fa-solid fa-route mr-2"></i>
+                            <span class="text-sm font-medium">自适应学习</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 数据类型对RAG选择的影响卡片 -->
+            <div class="card md:col-span-2 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-database text-3xl text-blue-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">数据类型对RAG选择的影响</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">非结构化数据</h3>
+                        <p class="text-sm text-gray-600 mb-2">PDF文档、纯文本、图像、音频、视频等</p>
+                        <p class="text-sm text-blue-600 font-medium">适用：传统RAG架构</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">结构化数据</h3>
+                        <p class="text-sm text-gray-600 mb-2">知识图谱、数据库表、BI系统中的客户记录等</p>
+                        <p class="text-sm text-blue-600 font-medium">适用：Graph RAG架构</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">半结构化数据</h3>
+                        <p class="text-sm text-gray-600 mb-2">HTML、JSON、XML、邮件等</p>
+                        <p class="text-sm text-blue-600 font-medium">适用：混合RAG架构</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">多模态数据</h3>
+                        <p class="text-sm text-gray-600 mb-2">文本、图像、音频、视频等多种模态</p>
+                        <p class="text-sm text-blue-600 font-medium">适用：Multimodal RAG架构</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 数据规模对RAG选择的影响卡片 -->
+            <div class="card md:col-span-2 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-expand text-3xl text-purple-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">数据规模对RAG选择的影响</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">小规模数据 (<10GB)</h3>
+                        <p class="text-sm text-gray-600 mb-2">个人文档、笔记或开源数据集</p>
+                        <p class="text-sm text-purple-600 font-medium">适用：基础单阶段检索架构，搭配中小型LLM</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">中等规模数据 (10-100GB)</h3>
+                        <p class="text-sm text-gray-600 mb-2">企业级文档库、专业知识库</p>
+                        <p class="text-sm text-purple-600 font-medium">适用：多模态检索+分块优化架构</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">大规模数据 (>100GB)</h3>
+                        <p class="text-sm text-gray-600 mb-2">大型企业知识库、行业数据库</p>
+                        <p class="text-sm text-purple-600 font-medium">适用：分布式向量数据库、分层索引结构</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">超大规模数据 (PB级及以上)</h3>
+                        <p class="text-sm text-gray-600 mb-2">国家级数据中心、大型科研数据库</p>
+                        <p class="text-sm text-purple-600 font-medium">适用：高级分布式RAG架构、量子RAG技术</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- 部署环境对比卡片 -->
+            <div class="card md:col-span-4 p-8">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-cyan"></div>
+                <div class="flex items-center mb-6">
+                    <i class="fa-solid fa-cloud text-3xl text-cyan-500 mr-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">不同部署环境的成本与性能对比</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white/70 rounded-lg overflow-hidden">
+                        <thead class="bg-cyan-500 text-white">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">部署环境</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">主要成本</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">性能特点</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">优势</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold">挑战</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">本地部署</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">硬件采购、软件许可、运维人员、电力消耗</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">低延迟、高吞吐量、稳定</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">数据安全、隐私保护、响应速度快</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">硬件成本高、维护复杂、升级困难</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">云端部署</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">云服务使用费用、网络流量费用、开发人员成本</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">弹性扩展、高可用性</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">弹性扩展、免维护、按需付费</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">网络依赖、数据传输延迟、长期成本可能较高</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">边缘部署</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">边缘设备、轻量化软件、网络带宽</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">超低延迟、离线运行</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">隐私保护、实时响应、网络带宽占用少</td>
+                                <td class="px-6 py-4 text-sm text-gray-600">计算资源受限、模型规模有限、维护分散</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 客户服务效果提升图表
+    const ctx = document.getElementById('customerServiceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['客户满意度', '问题解决率', '响应时间', '转化率', '人工客服工作量'],
+            datasets: [{
+                label: '应用RAG前',
+                data: [60, 70, 100, 70, 100],
+                backgroundColor: 'rgba(168, 85, 247, 0.2)',
+                borderColor: 'rgba(168, 85, 247, 1)',
+                borderWidth: 2
+            }, {
+                label: '应用RAG后',
+                data: [85, 90, 60, 100, 70],
+                backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                borderColor: 'rgba(34, 197, 94, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: {
+                        display: true,
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

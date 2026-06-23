@@ -1,0 +1,72 @@
+run_agent.job_name = "1225_QWEN_AGENT_BEITI_KNOWLEDGE"
+run_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data1225/北体知识库问题目录.jsonl"
+run_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.use_debug = True
+
+run_batch_agent.job_name = "1225_QWEN_AGENT_BEITI_KNOWLEDGE_BATCH"
+run_batch_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data1225/北体知识库问题目录.jsonl"
+run_batch_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_batch_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_batch_agent.max_concurrent = 2
+
+run_agent.skip_query_miner = False
+run_agent.skip_outline_generator = False
+run_agent.skip_report_writer = False
+run_agent.skip_report_polish = True
+run_agent.disable_query_miner = False
+run_agent.disable_images = False
+run_agent.disable_multi_images = False
+run_agent.disable_comment = True
+run_agent.disable_video = True
+run_agent.disable_outline_generator = False
+run_agent.disable_report_writer = False
+run_agent.disable_report_polish = True
+run_agent.use_zh = True
+run_agent.use_input_query = True
+run_agent.include_summary = False
+run_agent.require_cache_data = True
+run_agent.use_polish_before_render = False
+run_agent.use_evidence_as_key = True
+run_agent.use_hierarchical_writer = True
+run_agent.max_outline_generator_turns = 10
+run_agent.min_outline_generator_turns = 1
+run_agent.outline_judge_threshold = 8
+
+DisentangledOutlineJudge.model_name = "qwen3-next-80b-a3b-instruct"
+DisentangledOutlineJudge.llm_filter_model_name = "qwen3-next-80b-a3b-instruct"
+DisentangledOutlineJudge.max_retries = 50
+DisentangledOutlineJudge.retry_delay = 1
+DisentangledOutlineJudge.search_engine = "knowledge"
+DisentangledOutlineJudge.num_searches = 50
+DisentangledOutlineJudge.top_k = 50
+DisentangledOutlineJudge.return_score = True
+DisentangledOutlineJudge.use_flash_filter = False
+DisentangledOutlineJudge.include_prev_query = True
+DisentangledOutlineJudge.add_origin_query = False
+
+DisentangledOutlineGenerator.model_name = "qwen3-next-80b-a3b-instruct"
+DisentangledOutlineGenerator.max_retries = 50
+DisentangledOutlineGenerator.retry_delay = 1
+DisentangledOutlineGenerator.include_prev_outline = True
+DisentangledOutlineGenerator.include_prev_judge = True
+DisentangledOutlineGenerator.use_summary = True
+
+MemoryBankManager.model_name = "qwen3-next-80b-a3b-instruct"
+MemoryBankManager.max_retries = 10
+MemoryBankManager.retry_delay = 1
+MemoryBankManager.include_outline = False
+MemoryBankManager.combine_judge_and_evidence = True
+JudgeAndEvidenceGenerator.top_k = 500
+JudgeAndEvidenceGenerator.judge_thresh = 0.4
+JudgeAndEvidenceGenerator.max_retries_jina = 1
+JudgeAndEvidenceGenerator.max_retries = 5
+
+ReportWriter.model_name = "qwen3-next-80b-a3b-instruct"
+ReportWriter.max_retries = 50
+ReportWriter.retry_delay = 1
+ReportWriter.use_mask_evidence = True
+
+ReportPolish.model_name = "qwen3-next-80b-a3b-instruct"
+ReportPolish.need_fact = False
+ReportPolish.need_race = False

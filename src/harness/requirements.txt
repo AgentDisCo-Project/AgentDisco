@@ -1,0 +1,16 @@
+# Core dependencies
+gin-config>=0.5.0
+jinja2>=3.1.0
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+numpy>=1.24.0
+httpx>=0.25.0
+
+# Async support
+aiohttp>=3.8.0
+
+# Data processing
+json5>=0.9.0
+
+# Optional: for better logging
+colorlog>=6.7.0

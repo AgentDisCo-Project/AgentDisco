@@ -1,0 +1,77 @@
+run_workflow.job_name = "1208_GEMINI_SIGMA_KNOWLEDGE"
+run_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data1212/sigma.jsonl"
+run_workflow.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_workflow.download_dir = "/mnt/tidal-alsh01/dataset/video_agent_data/cache"
+run_workflow.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_workflow.use_query_modality = "text"
+run_workflow.use_note_modality = "text"
+run_workflow.use_golden_query_as_query = False
+
+run_batch_workflow.job_name = "1208_GEMINI_SIGMA_KNOWLEDGE_BATCH"
+run_batch_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data1212/sigma.jsonl"
+run_batch_workflow.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_batch_workflow.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_batch_workflow.max_concurrent = 4
+
+run_workflow.skip_entry_judge = False
+run_workflow.skip_query_generation = False
+run_workflow.skip_search = False
+run_workflow.skip_download_data = False
+run_workflow.skip_note_judge = False
+run_workflow.skip_score_note = False
+run_workflow.skip_select_note = False
+run_workflow.skip_note_summary = False
+run_workflow.skip_comment_summary = False
+run_workflow.skip_response_generation = False
+run_workflow.skip_response_judge = False
+
+run_workflow.disable_entry_judge = True
+run_workflow.disable_query_generation = False
+run_workflow.disable_search_image = True
+run_workflow.disable_search_web = True
+run_workflow.disable_search_note = True
+run_workflow.disable_search_knowledge = False
+run_workflow.disable_search_google_web = True
+run_workflow.disable_search_google_image = True
+run_workflow.disable_search_baidu_image = True
+run_workflow.disable_comment = True
+run_workflow.disable_video = True
+run_workflow.disable_note_judge = True
+run_workflow.disable_note_summary = True
+run_workflow.disable_comment_summary = True
+run_workflow.disable_response_judge = True
+run_workflow.disable_research = True
+
+run_workflow.select_top_k = 50
+run_workflow.image_key_type = "path"
+run_workflow.require_download_data = True
+run_workflow.return_search_results = False
+run_workflow.include_search = True
+run_workflow.response_key = "response"
+
+EntryJudge.model_name = "qwen2.5-72b-instruct"
+# EntryJudge.model_name = "deepseek-r1-0528"
+NoteJudge.model_name = "qwen2.5-72b-instruct"
+# NoteJudge.model_name = "deepseek-r1-0528"
+NoteJudge.max_concurrent = 5
+
+QueryGenerator.model_name = "gemini-2.5-pro"
+# QueryGenerator.model_name = "qwen3-next-80b-a3b-instruct"
+# QueryGenerator.model_name = "qwen3-235b-a22b-instruct-2507"
+RedNoteTextSearch.num_searches = 30
+RedImageSearch.num_searches = 30
+BochaTextSearch.num_searches = 30
+KnowledgeBaseSearch.num_searches = 30
+
+NoteReranker.need_chunk = False
+NoteReranker.chunk_size = 256
+NoteReranker.max_num_chunks_per_request = 1
+NoteReranker.use_chunk_size = 300
+NoteReranker.need_overlap = False
+NoteReranker.need_remove_empty_notes = True
+NoteSummary.model_name = "deepseek-v3.1-terminus"
+CommentSummary.model_name = "deepseek-r1-0528"
+ResponseJudge.model_name = "deepseek-v3.1-terminus"
+ResponseGenerator.model_name = "gemini-2.5-pro"
+# ResponseGenerator.model_name = "qwen3-next-80b-a3b-instruct"
+# ResponseGenerator.model_name = "qwen3-235b-a22b-instruct-2507"

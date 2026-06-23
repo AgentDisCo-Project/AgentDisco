@@ -1,0 +1,85 @@
+
+run_agent.job_name = "0410_BENCHMARK_GOOGLE"
+run_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0401_1/deep_research_bench_zh.jsonl"
+run_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_agent.use_debug = False
+
+run_batch_agent.job_name = "0410_BENCHMARK_GOOGLE_BATCH"
+run_batch_agent.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0401_1/deep_research_bench_zh.jsonl"
+run_batch_agent.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_batch_agent.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_batch_agent.max_concurrent = 10
+
+run_agent.skip_query_miner = True
+run_agent.skip_intent_planner = False
+run_agent.skip_outline_generator = False
+run_agent.force_restart_outline_generator = True
+run_agent.skip_report_writer = False
+run_agent.skip_report_polish = False
+run_agent.disable_query_miner = False
+run_agent.disable_intent_planner = False
+run_agent.disable_images = False
+run_agent.disable_multi_images = False
+run_agent.disable_comment = True
+run_agent.disable_video = True
+run_agent.disable_outline_generator = False
+run_agent.disable_report_writer = False
+run_agent.disable_report_polish = True
+run_agent.use_zh = True
+run_agent.use_input_query = True
+run_agent.include_summary = False
+run_agent.require_cache_data = True
+run_agent.use_polish_before_render = False
+run_agent.use_evidence_as_key = False
+run_agent.use_hierarchical_writer = True
+run_agent.max_outline_generator_turns = 10
+run_agent.min_outline_generator_turns = 1
+run_agent.outline_judge_threshold = 9
+
+IntentPlanner.model_name = "gemini-3.1-pro"
+DisentangledOutlineJudgeBlueprint.model_name = "gemini-3.1-pro"
+DisentangledOutlineJudgeBlueprint.llm_filter_model_name = "gemini-3.1-pro"
+DisentangledOutlineJudgeBlueprint.max_retries = 10
+DisentangledOutlineJudgeBlueprint.retry_delay = 1
+DisentangledOutlineJudgeBlueprint.search_engine = "google"
+DisentangledOutlineJudgeBlueprint.num_searches = 10
+DisentangledOutlineJudgeBlueprint.top_k = 500
+DisentangledOutlineJudgeBlueprint.return_score = True
+DisentangledOutlineJudgeBlueprint.use_flash_filter = False
+DisentangledOutlineJudgeBlueprint.include_prev_query = True
+DisentangledOutlineJudgeBlueprint.add_origin_query = False
+
+DisentangledOutlineGeneratorBlueprint.model_name = "gemini-3.1-pro"
+DisentangledOutlineGeneratorBlueprint.max_retries = 10
+DisentangledOutlineGeneratorBlueprint.retry_delay = 1
+DisentangledOutlineGeneratorBlueprint.include_prev_outline = True
+DisentangledOutlineGeneratorBlueprint.include_prev_judge = True
+DisentangledOutlineGeneratorBlueprint.use_summary = True
+
+MemoryBankManager.model_name = "gpt-oss-120b"
+MemoryBankManager.max_retries = 10
+MemoryBankManager.retry_delay = 1
+MemoryBankManager.include_outline = False
+MemoryBankManager.combine_judge_and_evidence = True
+JudgeAndEvidenceQAGenerator.top_k = 500
+JudgeAndEvidenceQAGenerator.judge_thresh = 0.2
+JudgeAndEvidenceQAGenerator.max_retries_jina = 3
+JudgeAndEvidenceQAGenerator.max_retries = 5
+SummaryQAGenerator.max_retries = 5
+SummaryQAGenerator.max_retries_jina = 3
+SummaryQAGenerator.top_k = 500
+SummaryQAGenerator.judge_thresh = 0.1
+GoogleTextImageSearch.fetch_detail = True
+GoogleTextImageSearch.use_jina_as_backup = False
+SandboxSearch.reference_citation_path = "./sandbox/deep_research_bench_zh_citations.jsonl"
+
+ReportWriter.model_name = "gemini-3.1-pro"
+ReportWriter.max_retries = 50
+ReportWriter.retry_delay = 1
+ReportWriter.use_mask_evidence = False
+ReferenceRender.use_evidence_as_key = False
+
+ReportPolish.model_name = "gemini-3.1-pro"
+ReportPolish.need_fact = False
+ReportPolish.need_race = False

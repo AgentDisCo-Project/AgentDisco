@@ -1,0 +1,44 @@
+eval_workflow.job_name = "0225_EVAL_GEMINI_TEST"
+
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_51.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_52.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_53.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_54.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_55.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_56.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_57.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_58.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_59.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_60.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_61.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_62.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_63.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_64.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_65.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_66.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_67.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_68.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_69.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_70.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_71.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_72.json"
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/en_samples/deep_research_bench_en_73.json"
+
+eval_workflow.input_reference_report_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/dev/0225/ragengine/benchmark/deep_research_bench_en_references"
+eval_workflow.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_workflow.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+
+eval_workflow.need_pairwise = True
+eval_workflow.use_zh = False
+eval_workflow.disable_eval_fact = True
+eval_workflow.disable_eval_race = False
+eval_workflow.skip_eval_fact = False
+eval_workflow.skip_eval_race = False
+eval_workflow.skip_criteria_generation = False
+eval_workflow.require_cache_data = True
+eval_workflow.use_detail = True
+
+ValidateReference.model_name = "gemini-3-flash"
+CriteriaGenerator.model_name = "gemini-2.5-pro"
+ReportScorer.model_name = "gemini-2.5-pro"
+ReportScorer.use_pairwise = True

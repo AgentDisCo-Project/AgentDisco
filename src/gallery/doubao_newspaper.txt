@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 模版 · 报纸版式</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #222222;
+            --paper: #faf7f2;
+            --rule: #ddd6ce;
+            --muted: #6b7280;
+            --accent: #111827;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1140px; margin: 0 auto; padding: 28px 20px; }
+        .masthead {
+            text-align: center;
+            border-bottom: 2px solid var(--rule);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+        }
+        .masthead h1 { font-size: 44px; margin: 0; letter-spacing: 0.5px; }
+        .masthead p { margin: 6px 0 0; color: var(--muted); font-family: 'Inter', sans-serif; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr; /* 文本 / 图 / 表 */
+            gap: 22px;
+        }
+        .column { background: #fff; border: 1px solid var(--rule); padding: 18px; }
+        .section-title { font-weight: 700; font-size: 20px; margin: 0 0 12px; border-bottom: 1px solid var(--rule); padding-bottom: 6px; }
+        .byline { color: var(--muted); font-size: 12px; font-family: 'Inter', sans-serif; margin-bottom: 10px; }
+        .dropcap:first-letter {
+            float: left; font-size: 48px; line-height: 1; padding: 6px 8px 0 0; font-weight: 700; color: var(--accent);
+        }
+        .table { margin-bottom: 16px; }
+        .caption { color: var(--muted); font-size: 12px; margin-top: 6px; font-family: 'Inter', sans-serif; }
+
+        .cite-ref {
+            color: #1d4ed8;
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+
+        @media (max-width: 1000px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="masthead">
+            <h1>[论文/项目标题]</h1>
+            <p>[副标题：以报纸分栏风格组织信息]</p>
+        </div>
+
+        <div class="grid">
+            <!-- 第一栏：主要文本 -->
+            <div class="column">
+                <div class="section-title">摘要与背景</div>
+                <div class="byline">作者：[作者姓名] | 日期：[日期]</div>
+                <p class="dropcap">
+                    [在此处插入摘要的首段。首字母下沉效果已自动应用。]
+                    在此处继续阐述研究背景、动机和核心问题<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a>。
+                </p>
+                <p>
+                    [更多背景介绍文本...]
+                </p>
+            </div>
+
+            <!-- 第二栏：方法论 -->
+            <div class="column">
+                <div class="section-title">方法论</div>
+                <p>
+                    [在此处描述核心方法、算法流程或系统架构的设计细节。]
+                </p>
+            </div>
+
+            <!-- 第三栏：结果与数据 -->
+            <div class="column">
+                <div class="section-title">实验结果</div>
+                <div class="table">
+                    <!-- 简单的表格示例 -->
+                    <table style="width:100%; text-align:left; font-size:14px; border-collapse:collapse;">
+                        <thead>
+                            <tr style="border-bottom:1px solid #eee;">
+                                <th>Method</th>
+                                <th>Acc</th>
+                                <th>F1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Baseline</td>
+                                <td>85.2</td>
+                                <td>84.1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ours</strong></td>
+                                <td><strong>92.5</strong></td>
+                                <td><strong>91.8</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="caption">表 1：在主要数据集上的性能对比</div>
+                </div>
+                <p>
+                    [对实验结果的分析与讨论。]
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

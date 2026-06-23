@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[主题标题] | Vertical Visual Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#2d7d32;
+  --primary-dark:#1b5e20;
+  --primary-light:#4caf50;
+  --accent:#ff9800;
+  --text-dark:#1a1a1a;
+  --text-medium:#424242;
+  --text-light:#757575;
+  --bg-warm:#faf8f5;
+  --bg-cream:#f5f0e8;
+  --border:#e0d8cc;
+  --shadow:rgba(0,0,0,0.08);
+  --shadow-lg:rgba(0,0,0,0.14);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans SC',sans-serif;
+  color:var(--text-dark);
+  background:var(--bg-warm);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* Few-shot usage:
+   Replace bracketed placeholders with source-specific content.
+   Keep the visual vocabulary: hero, sticky nav, vertical image + text, reversed row,
+   full-width image, card grid, comparison table, and compact summary.
+   Delete unused modules instead of repeating many similar sections. */
+
+.hero {
+  min-height:92vh;
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 45%,var(--primary-light) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content { position:relative; z-index:2; padding:2rem; max-width:920px; }
+.hero-badge {
+  display:inline-block;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  padding:0.5rem 1.5rem;
+  border-radius:50px;
+  color:#fff;
+  font-size:0.9rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:2rem;
+  border:1px solid rgba(255,255,255,0.2);
+}
+.hero h1 {
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(2.5rem,6vw,5rem);
+  font-weight:900;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:1.5rem;
+  text-shadow:0 4px 20px rgba(0,0,0,0.2);
+}
+.hero-subtitle {
+  font-size:clamp(1rem,2vw,1.35rem);
+  color:rgba(255,255,255,0.9);
+  font-weight:300;
+  margin:0 auto 3rem;
+  max-width:720px;
+}
+.hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+.hero-stat { text-align:center; min-width:110px; }
+.hero-stat-number {
+  font-family:'Noto Serif SC',serif;
+  font-size:2.4rem;
+  font-weight:700;
+  color:#fff;
+  display:block;
+}
+.hero-stat-label { font-size:0.85rem; color:rgba(255,255,255,0.72); letter-spacing:1px; }
+.scroll-indicator {
+  position:absolute;
+  bottom:2rem;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,0.62);
+  font-size:0.8rem;
+  animation:bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,20%,50%,80%,100% { transform:translateX(-50%) translateY(0); }
+  40% { transform:translateX(-50%) translateY(-10px); }
+  60% { transform:translateX(-50%) translateY(-5px); }
+}
+
+.nav-bar {
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+.nav-list { display:flex; list-style:none; overflow-x:auto; scrollbar-width:none; }
+.nav-list::-webkit-scrollbar { display:none; }
+.nav-list a {
+  display:block;
+  padding:1rem 1.2rem;
+  color:var(--text-medium);
+  text-decoration:none;
+  font-size:0.85rem;
+  font-weight:500;
+  white-space:nowrap;
+  border-bottom:3px solid transparent;
+  transition:all 0.2s;
+}
+.nav-list a:hover,
+.nav-list a.active { color:var(--primary); border-bottom-color:var(--primary); }
+
+.main-container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-bottom:1px solid var(--border); }
+section:last-child { border-bottom:none; }
+.section-header { margin-bottom:2.5rem; }
+.section-tag {
+  display:inline-block;
+  background:var(--bg-cream);
+  color:var(--primary-dark);
+  padding:0.3rem 1rem;
+  border-radius:20px;
+  font-size:0.8rem;
+  font-weight:500;
+  margin-bottom:0.8rem;
+}
+.section-title-row { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+.section-number {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  background:var(--primary);
+  color:#fff;
+  font-family:'Noto Serif SC',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  border-radius:12px;
+  flex:0 0 auto;
+}
+.section-header h2 {
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:700;
+  margin:0;
+}
+.section-header p { color:var(--text-light); font-size:1.05rem; max-width:760px; }
+.lead { font-size:1.05rem; margin-bottom:1rem; }
+.citation-ref {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:1.45em;
+  height:1.18em;
+  padding:0 0.38em;
+  margin:0 0.16em;
+  border-radius:999px;
+  background:#6b7280;
+  color:#fff;
+  font-size:0.62em;
+  font-weight:700;
+  line-height:1;
+  vertical-align:super;
+  box-shadow:0 1px 4px rgba(0,0,0,0.16);
+  text-decoration:none;
+  cursor:pointer;
+}
+.citation-ref::before {
+  content:"↗";
+  font-size:0.82em;
+  margin-right:0.18em;
+  opacity:0.82;
+}
+.citation-ref:hover { background:var(--primary-dark); }
+
+.magazine-row {
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:3rem;
+  align-items:start;
+}
+.magazine-row.reverse { grid-template-columns:1fr 380px; }
+.magazine-img-wrap {
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 40px var(--shadow-lg);
+  height:520px;
+}
+.image-link {
+  display:block;
+  width:100%;
+  height:100%;
+  color:inherit;
+  text-decoration:none;
+}
+.magazine-img-wrap img,
+.full-bleed-img img,
+.vert-card-img img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.magazine-img-caption,
+.full-bleed-caption {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+  padding:2.5rem 1.5rem 1rem;
+  color:#fff;
+  font-size:0.85rem;
+}
+.magazine-content { padding-top:0.5rem; }
+
+.info-card,
+.quick-ref {
+  background:#fff;
+  border-radius:16px;
+  padding:2rem;
+  box-shadow:0 4px 20px var(--shadow);
+  border:1px solid var(--border);
+}
+.info-card h3,
+.quick-ref h4 {
+  font-family:'Noto Serif SC',serif;
+  color:var(--primary-dark);
+  margin-bottom:1rem;
+}
+.highlight-box,
+.warning-box,
+.tip-box {
+  border-radius:0 12px 12px 0;
+  padding:1.5rem 2rem;
+  margin:1.5rem 0;
+}
+.highlight-box { background:linear-gradient(135deg,#e8f5e9 0%,#f1f8e9 100%); border-left:4px solid var(--primary); }
+.warning-box { background:linear-gradient(135deg,#fff3e0 0%,#ffe0b2 100%); border-left:4px solid var(--accent); }
+.tip-box { background:linear-gradient(135deg,#e3f2fd 0%,#e1f5fe 100%); border-left:4px solid #2e7cb8; }
+.grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+.grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; }
+.term-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.92rem; }
+.term-table th {
+  background:var(--primary);
+  color:#fff;
+  text-align:left;
+  padding:0.9rem 1.2rem;
+  font-weight:600;
+}
+.term-table th:first-child { border-radius:12px 0 0 0; }
+.term-table th:last-child { border-radius:0 12px 0 0; }
+.term-table td { padding:0.9rem 1.2rem; border-bottom:1px solid var(--border); vertical-align:top; }
+.term-table tr:nth-child(even) { background:var(--bg-warm); }
+.term-en { font-weight:600; color:var(--primary-dark); }
+
+.vert-card {
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 30px var(--shadow);
+  border:1px solid var(--border);
+}
+.vert-card-img { width:100%; aspect-ratio:2/3; overflow:hidden; }
+.vert-card-body { padding:1.5rem; }
+.vert-card-body h4 {
+  font-family:'Noto Serif SC',serif;
+  font-size:1.1rem;
+  margin-bottom:0.5rem;
+}
+.vert-card-body p { font-size:0.9rem; color:var(--text-medium); line-height:1.7; }
+.vert-card-tag {
+  display:inline-block;
+  font-size:0.75rem;
+  padding:0.2rem 0.7rem;
+  border-radius:12px;
+  font-weight:500;
+  margin-bottom:0.5rem;
+  background:#e8f5e9;
+  color:var(--primary-dark);
+}
+
+.full-bleed-img {
+  width:100%;
+  height:400px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 40px var(--shadow-lg);
+  margin:2rem 0;
+  position:relative;
+}
+.steps {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin:2rem 0;
+  padding:2rem;
+  background:var(--bg-cream);
+  border-radius:16px;
+}
+.step {
+  min-width:76px;
+  min-height:76px;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  background:var(--primary);
+  padding:0.6rem;
+}
+.step.accent { background:var(--accent); }
+.step.dark { background:var(--text-dark); }
+.step strong { font-size:1rem; line-height:1.15; }
+.step span { font-size:0.7rem; opacity:0.82; margin-top:2px; }
+.step-arrow { color:var(--primary-light); font-size:1.4rem; }
+
+footer {
+  background:var(--text-dark);
+  color:#fff;
+  padding:4rem 2rem 2rem;
+  text-align:center;
+}
+footer p { opacity:0.7; font-size:0.9rem; }
+.fade-in { opacity:0; transform:translateY(30px); transition:opacity 0.6s,transform 0.6s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+  .magazine-row,
+  .magazine-row.reverse { grid-template-columns:1fr; }
+  .magazine-img-wrap { height:380px; max-width:420px; margin:0 auto; }
+  section { padding:3rem 0; }
+  .full-bleed-img { height:280px; }
+}
+@media(max-width:600px) {
+  .main-container,
+  .nav-container { padding:0 1rem; }
+  .hero-stat-number { font-size:2rem; }
+  .info-card,
+  .quick-ref { padding:1.3rem; }
+  .term-table th,
+  .term-table td { padding:0.7rem; font-size:0.85rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">[Category / Guide / Report]</div>
+    <h1>[主题主标题]<br>[主题副标题]</h1>
+    <p class="hero-subtitle">[用一到两句话概括内容要解决的问题、适用人群和核心价值。]</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-number">[N]</span><span class="hero-stat-label">[关键指标]</span></div>
+      <div class="hero-stat"><span class="hero-stat-number">[N]</span><span class="hero-stat-label">[章节/方法]</span></div>
+      <div class="hero-stat"><span class="hero-stat-number">[N]</span><span class="hero-stat-label">[结论/贡献]</span></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">向下滚动开始阅读 &#8595;</div>
+</header>
+
+<nav class="nav-bar">
+  <div class="nav-container">
+    <ul class="nav-list">
+      <li><a href="#overview" class="active">概览</a></li>
+      <li><a href="#mechanism">机制</a></li>
+      <li><a href="#evidence">证据</a></li>
+      <li><a href="#compare">对比</a></li>
+      <li><a href="#takeaways">速查</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-container">
+
+<section id="overview" class="fade-in">
+  <div class="section-header">
+    <span class="section-tag">第一部分</span>
+    <div class="section-title-row">
+      <div class="section-number">1</div>
+      <h2>[核心背景 / 问题定义]</h2>
+    </div>
+    <p>[本节一句话导读：说明为什么这个主题重要，以及读者应该先理解什么。]</p>
+  </div>
+  <div class="magazine-row">
+    <div class="magazine-img-wrap">
+      <a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer">
+        <img src="[vertical-image-1.jpg]" alt="[图片描述]">
+      </a>
+      <div class="magazine-img-caption">[短 caption：解释图像与核心观点的关系]</div>
+    </div>
+    <div class="magazine-content">
+      <p class="lead">[第一段核心解释。用具体事实、定义或背景建立上下文，保留原文的重要数据与引用]<a class="citation-ref" href="[source-url-1]" target="_blank" rel="noopener noreferrer">1</a>[。]</p>
+      <p class="lead">[第二段补充影响、挑战或应用场景。避免堆砌长段落，优先拆成可读信息块]<a class="citation-ref" href="[source-url-2]" target="_blank" rel="noopener noreferrer">2</a>[。]</p>
+      <div class="highlight-box">
+        <h4>关键观点</h4>
+        <p>[用一两句话提炼本节最重要的洞察，可包含加粗关键词和结论。]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mechanism" class="fade-in">
+  <div class="section-header">
+    <span class="section-tag">第二部分</span>
+    <div class="section-title-row">
+      <div class="section-number">2</div>
+      <h2>[机制 / 方法 / 流程]</h2>
+    </div>
+    <p>[本节导读：解释过程如何发生，或方法由哪些阶段组成。]</p>
+  </div>
+  <div class="magazine-row reverse">
+    <div class="magazine-content">
+      <p class="lead">[解释流程的起点、输入、关键变量或第一步]<a class="citation-ref" href="[source-url-3]" target="_blank" rel="noopener noreferrer">3</a>[。]</p>
+      <p class="lead">[解释中间环节和结果，尽量使用源材料中的术语]<a class="citation-ref" href="[source-url-4]" target="_blank" rel="noopener noreferrer">4</a>[。]</p>
+      <div class="warning-box"><strong>注意：</strong> [写出容易误解、限制条件、风险或边界。]</div>
+    </div>
+    <div class="magazine-img-wrap">
+      <a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer">
+        <img src="[vertical-image-2.jpg]" alt="[图片描述]">
+      </a>
+      <div class="magazine-img-caption">[caption：强调流程或机制的视觉线索]</div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><strong>[Step 1]</strong><span>[输入]</span></div>
+    <span class="step-arrow">&#8594;</span>
+    <div class="step"><strong>[Step 2]</strong><span>[处理]</span></div>
+    <span class="step-arrow">&#8594;</span>
+    <div class="step accent"><strong>[Step 3]</strong><span>[输出]</span></div>
+    <span class="step-arrow">&#8594;</span>
+    <div class="step dark"><strong>[Result]</strong><span>[结论]</span></div>
+  </div>
+</section>
+
+<section id="evidence" class="fade-in">
+  <div class="section-header">
+    <span class="section-tag">第三部分</span>
+    <div class="section-title-row">
+      <div class="section-number">3</div>
+      <h2>[关键证据 / 实验结果 / 案例]</h2>
+    </div>
+    <p>[本节导读：说明下面的图或案例证明了什么。]</p>
+  </div>
+  <div class="full-bleed-img">
+    <a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer">
+      <img src="[wide-or-collage-image.jpg]" alt="[图片描述]">
+    </a>
+    <div class="full-bleed-caption">[全幅图说明：用一句话概括图中最值得注意的发现]</div>
+  </div>
+  <div class="grid-3">
+    <div class="vert-card">
+      <div class="vert-card-img"><a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer"><img src="[vertical-card-1.jpg]" alt="[卡片图片描述]"></a></div>
+      <div class="vert-card-body"><span class="vert-card-tag">[标签 A]</span><h4>[子主题 A]</h4><p>[用 2-3 句解释这个子主题、案例或结果。]</p></div>
+    </div>
+    <div class="vert-card">
+      <div class="vert-card-img"><a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer"><img src="[vertical-card-2.jpg]" alt="[卡片图片描述]"></a></div>
+      <div class="vert-card-body"><span class="vert-card-tag">[标签 B]</span><h4>[子主题 B]</h4><p>[用 2-3 句解释这个子主题、案例或结果。]</p></div>
+    </div>
+    <div class="vert-card">
+      <div class="vert-card-img"><a class="image-link" href="[source-note-url]" target="_blank" rel="noopener noreferrer"><img src="[vertical-card-3.jpg]" alt="[卡片图片描述]"></a></div>
+      <div class="vert-card-body"><span class="vert-card-tag">[标签 C]</span><h4>[子主题 C]</h4><p>[用 2-3 句解释这个子主题、案例或结果。]</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="fade-in">
+  <div class="section-header">
+    <span class="section-tag">第四部分</span>
+    <div class="section-title-row">
+      <div class="section-number">4</div>
+      <h2>[对比 / 分类 / 评估]</h2>
+    </div>
+    <p>[本节导读：说明比较维度，以及读者应该如何解读表格。]</p>
+  </div>
+  <div class="info-card">
+    <h3>[对比表标题]</h3>
+    <table class="term-table">
+      <tr><th>[维度]</th><th>[方案/类别 A]</th><th>[方案/类别 B]</th><th>[方案/类别 C]</th></tr>
+      <tr><td class="term-en">[指标 1]</td><td>[描述]<a class="citation-ref" href="[source-url-5]" target="_blank" rel="noopener noreferrer">5</a></td><td>[描述]</td><td>[描述]</td></tr>
+      <tr><td class="term-en">[指标 2]</td><td>[描述]</td><td>[描述]<a class="citation-ref" href="[source-url-6]" target="_blank" rel="noopener noreferrer">6</a></td><td>[描述]</td></tr>
+      <tr><td class="term-en">[指标 3]</td><td>[描述]</td><td>[描述]</td><td>[描述]</td></tr>
+    </table>
+  </div>
+  <div class="grid-2" style="margin-top:2rem;">
+    <div class="tip-box"><h4>适用场景</h4><p>[总结哪类读者、任务或条件下最适合采用某种方法。]</p></div>
+    <div class="highlight-box"><h4>最终判断</h4><p>[给出基于原文证据的推荐、结论或优先级。]</p></div>
+  </div>
+</section>
+
+<section id="takeaways" class="fade-in">
+  <div class="section-header">
+    <span class="section-tag">总结</span>
+    <div class="section-title-row">
+      <div class="section-number" style="background:var(--accent);">+</div>
+      <h2>[速查卡 / 行动清单 / 结论]</h2>
+    </div>
+    <p>[用一句话说明这部分帮助读者快速复盘或执行。]</p>
+  </div>
+  <div class="grid-2">
+    <div class="quick-ref">
+      <h4>核心结论</h4>
+      <table class="term-table">
+        <tr><td>[结论 1]</td><td>[一句解释或证据]<a class="citation-ref" href="[source-url-7]" target="_blank" rel="noopener noreferrer">7</a></td></tr>
+        <tr><td>[结论 2]</td><td>[一句解释或证据]<a class="citation-ref" href="[source-url-8]" target="_blank" rel="noopener noreferrer">8</a></td></tr>
+        <tr><td>[结论 3]</td><td>[一句解释或证据]</td></tr>
+      </table>
+    </div>
+    <div class="quick-ref">
+      <h4>下一步</h4>
+      <table class="term-table">
+        <tr><td>[行动 1]</td><td>[具体做法]</td></tr>
+        <tr><td>[行动 2]</td><td>[具体做法]</td></tr>
+        <tr><td>[行动 3]</td><td>[具体做法]</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p style="font-family:'Noto Serif SC',serif;font-size:1.3rem;margin-bottom:1rem;">[主题标题]</p>
+  <p>[一句话总结或来源说明]</p>
+  <p style="margin-top:2rem;font-size:0.8rem;opacity:0.5;">Generated as a vertical visual guide template.</p>
+</footer>
+
+<script>
+const navLinks = document.querySelectorAll('.nav-list a');
+navLinks.forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold:0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

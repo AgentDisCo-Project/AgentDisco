@@ -1,0 +1,24 @@
+You will be provided with a research report. The body of the report will contain some citations to references.
+
+Citations in the main text may appear in the following forms:
+1. A segment of text + space + number, for example: "Li Qiang constructed a socioeconomic status index (SES) based on income, education, and occupation, dividing society into 7 levels 15"
+2. A segment of text + [number], for example: "Li Qiang constructed a socioeconomic status index (SES) based on income, education, and occupation, dividing society into 7 levels[15]"
+3. A segment of text + [number†(some line numbers, etc.)], for example: "Li Qiang constructed a socioeconomic status index (SES) based on income, education, and occupation, dividing society into 7 levels[15†L10][5L23][7†summary]"
+4. [Citation Source](Citation Link), for example: "According to [ChinaFile: A Guide to Social Class in Modern China](https://www.chinafile.com/reporting-opinion/media/guide-social-class-modern-china)'s classification, Chinese society can be divided into nine strata"
+
+Please identify **all** instances where references are cited in the main text, and extract (fact, ref_idx, url) triplets. When extracting, pay attention to the following:
+1. Since these facts will need to be verified later, you may need to look for some context before and after the citation to ensure that the fact is complete and understandable, rather than just a simple phrase or short expression.
+2. If a fact cites multiple references, then it should correspond to multiple triplets: (fact, ref_idx_1, url_1) and (fact, ref_idx_2, url_2).
+3. For the third form of citation, ref_idx should only consider the first number part, not other content indicating specific locations; for the fourth form of citation (i.e., where the citation source and link appear directly in the text), the ref_idx should be uniformly set to 0.
+4. If the main text does not specify the exact location of the citation (for example, only the reference list is listed at the end of the article, without specifying the citation point in the text), please return an empty list.
+
+You should return a JSON list format, where each item in the list is a triplet, for example:
+[
+{
+"fact": "Text segment from the original document. Note that Chinese quotation marks should use full-width marks. And add a single backslash before the English quotation mark to make it readable for python json module.",
+"ref_idx": "The index of the cited reference in the reference list for this text segment.",
+"url": "The URL of the cited reference for this text segment (extracted from the reference list at the end of the research report or from the parentheses at the citation point)."
+}
+]
+
+Please begin the extraction now. Output only the JSON list directly, without any chitchat or explanations.

@@ -1,0 +1,28 @@
+# ── eval_batch_from_query 参数 ────────────────────────────────
+eval_batch_from_query.job_name         = "0444_EVAL_GEMINI_TEST_EN_DEEPRESEARCH_BENCH"
+eval_batch_from_query.cache_dir        = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_batch_from_query.log_dir          = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+eval_batch_from_query.query_file       = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/deep_research_bench_en.jsonl"
+eval_batch_from_query.rerun_folder     = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0401_2"
+eval_batch_from_query.rerun_folder     = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/data0444_en"
+eval_batch_from_query.reference_folder = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/deep_research_bench_en_references"
+eval_batch_from_query.output_path      = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/dev/0407/ragengine/cache/outputs.jsonl"
+eval_batch_from_query.max_concurrent   = 10
+eval_batch_from_query.require_cache_data = True
+
+# ── eval_workflow 参数 ───────────────────────────────────────
+eval_workflow.need_pairwise            = True
+eval_workflow.use_zh                   = False
+eval_workflow.disable_eval_fact        = True
+eval_workflow.disable_eval_race        = False
+eval_workflow.skip_eval_fact           = False
+eval_workflow.skip_eval_race           = False
+eval_workflow.skip_criteria_generation = False
+eval_workflow.require_cache_data       = True
+eval_workflow.use_detail               = True
+
+# ── 模型配置 ─────────────────────────────────────────────────
+ValidateReference.model_name  = "gemini-3-flash"
+CriteriaGenerator.model_name  = "gemini-3-flash"
+ReportScorer.model_name       = "gemini-3-flash"
+ReportScorer.use_pairwise     = True

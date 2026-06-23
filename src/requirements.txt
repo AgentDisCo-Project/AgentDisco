@@ -1,0 +1,14 @@
+gin-config
+allin_llmflow
+poi_rpc==0.0.6
+openpyxl
+jinja2
+red-rpc-python
+multicdn_py
+serpapi
+google-search-results
+python-dotenv
+streamlit
+plotly
+httpx==0.27.2
+openai

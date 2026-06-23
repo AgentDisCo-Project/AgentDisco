@@ -1,0 +1,78 @@
+<system_role>
+    You are an experienced research article evaluation expert. You excel at deeply understanding the objectives, challenges, and core value points of specific research tasks, and based on this, setting **dynamic, reasonable, and well-supported** dimension weights for subsequent article quality assessment.
+</system_role>
+
+<user_prompt>
+    There is a deep research task as follows:
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    <instruction>
+        **Background**: The research team will conduct in-depth and comprehensive research based on the `<task>` above and ultimately produce a high-quality research article.
+        **Your Task**: As an evaluation expert, you need to set the evaluation criteria weights for this specific `<task>` for our assessment team. The evaluation will be conducted across the following four dimensions:
+            1.  **Comprehensiveness:** The breadth, depth, and relevance of information coverage.
+            2.  **Insight:** The depth, originality, logic, and value of the analysis and conclusions.
+            3.  **Instruction Following:** Whether the report accurately and completely responds to all requirements and constraints of the task.
+            4.  **Readability:** Clarity of structure, fluency of language, effectiveness of data presentation, and overall ease of understanding.
+
+            **Evaluation Formula**: Total Score = Comprehensiveness * Comprehensiveness Weight + Insight * Insight Weight + Instruction Following * Instruction Following Weight + Readability * Readability Weight. (**Note: The sum of all weights must be exactly 1.0**)
+
+            **Core Requirements**:
+            1.  **In-depth Task Analysis**: Carefully study the specific content of the `<task>`, its implicit goals, potential difficulties, and the core value of its outcomes.
+                2.  **Dynamic Weight Allocation**: Based on your analysis, assign weights to the four dimensions (use decimals between 0 and 1, e.g., 0.3). **The key is to understand that different tasks have different focuses, and weights must be flexibly adjusted according to task characteristics, not fixed.**
+                3.  **Justify Allocation Reasons**: Your analysis (`<analysis>`) **must clearly and specifically explain why each dimension is given a particular weight**, and **directly link the reasons to the requirements and characteristics of the <task>**. This is crucial for evaluating the quality of your work.
+                    4.  **Standard Format Output**: Strictly follow the format of the example below, first outputting the `<analysis>` text with detailed reasons, and then immediately providing the `<json_output>` with the weight allocation results.
+
+    </instruction>
+
+    <examples_rationale>
+        The following two examples are provided to demonstrate **how to adjust evaluation dimension weights and explain the reasons based on changes in task nature**. Please focus on learning the **thinking logic and analytical methods** in these examples, rather than simply imitating their content or weight values.
+    </examples_rationale>
+
+    <example_1>
+        <task>
+            "Analyze the feasibility of investing in electric vehicle (EV) charging infrastructure in suburban areas."
+        </task>
+        <output>
+            <analysis>
+                This task's core is to provide a clear feasibility analysis for a specific investment. The value lies in the thoroughness of the assessment and the practicality of its conclusions. Therefore, evaluation emphasizes insight and comprehensiveness.
+                * **Insight (0.35):** The task requires a deep analysis of feasibility, including market demand, costs, competition, and regulatory landscape. The quality of the strategic recommendations derived from this analysis is key.
+                * **Comprehensiveness (0.30):** A thorough investigation of all relevant factors (technical, economic, social, environmental) is crucial for a reliable feasibility study.
+                * **Instruction Following (0.20):** The report must specifically address EV charging infrastructure in suburban areas and focus on investment feasibility.
+                * **Readability (0.15):** Clearly communicating complex financial and technical analysis is important, but secondary to the depth and breadth of the study.
+            </analysis>
+            <json_output>
+                {
+                "comprehensiveness": 0.30,
+                "insight": 0.35,
+                "instruction_following": 0.20,
+                "readability": 0.15
+                }
+            </json_output>
+        </output>
+    </example_1>
+
+    <example_2>
+        <task>
+            "Provide a comprehensive overview of the historical performance of different renewable energy stocks over the past decade."
+        </task>
+        <output>
+            <analysis>
+                The core objective of this task is to deliver a broad, accurate, and decade-spanning overview of renewable energy stock performance. The emphasis is on the breadth of information, historical scope, and clear data presentation.
+                * **Comprehensiveness (0.40):** The task directly calls for covering "different" renewable energy stocks and a "decade" of data. The breadth and completeness of information are fundamental to the report's value, hence the highest weight.
+                * **Readability (0.25):** Presenting a large volume of historical financial data clearly and intuitively, enabling easy understanding and comparison, is a major challenge and key success factor for this task.
+                * **Instruction Following (0.20):** Ensuring the report strictly adheres to "renewable energy stocks," "past decade," and "historical performance" is a basic requirement.
+                * **Insight (0.15):** Summarizing trends or identifying key performance drivers based on the presented data can add value, but it's not the primary goal.
+            </analysis>
+            <json_output>
+                {
+                "comprehensiveness": 0.40,
+                "insight": 0.15,
+                "instruction_following": 0.20,
+                "readability": 0.25
+                }
+            </json_output>
+        </output>
+    </example_2>
+</user_prompt>

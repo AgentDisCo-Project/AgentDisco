@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 模版 · 企业蓝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7fafc;
+            --fg: #0f172a; /* slate-900 */
+            --muted: #475569; /* slate-600 */
+            --card: #ffffff;
+            --border: #e2e8f0; /* slate-200 */
+            --primary: #1d4ed8; /* blue-700 */
+            --primary-600: #2563eb; /* blue-600 */
+            --accent: #0ea5e9; /* sky-500 */
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 28px 20px; }
+        .hero {
+            background: linear-gradient(135deg, rgba(29,78,216,0.07), rgba(14,165,233,0.08));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 26px;
+        }
+        .hero h1 { margin: 0 0 6px; font-size: 40px; font-weight: 800; color: var(--primary); }
+        .hero p { margin: 0; color: var(--muted); }
+
+        .grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; margin-top: 18px; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+        .card h2 { font-size: 18px; margin: 0 0 10px; color: var(--primary-600); }
+        .kpi { display: flex; gap: 14px; }
+        .kpi-item { flex: 1; background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
+        .kpi-item .num { font-size: 28px; font-weight: 800; color: var(--primary); }
+        .kpi-item .label { font-size: 12px; color: var(--muted); }
+        .caption { color: var(--muted); font-size: 12px; margin-top: 6px; }
+        .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 12px; border-radius: 10px;
+            background: var(--primary); color: #fff; text-decoration: none; font-weight: 600;
+        }
+        .btn.secondary { background: var(--accent); }
+        ol { padding-left: 18px; }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .cite-ref {
+            color: var(--primary);
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+        @media (max-width: 1000px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>企业蓝主题海报</h1>
+            <p>规范、稳重、可信赖的企业级设计语言</p>
+            <div class="btns" style="margin-top: 12px;">
+                <a class="btn" href="#" target="_blank" rel="noreferrer">项目主页</a>
+                <a class="btn secondary" href="#" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>概述与要点</h2>
+                <div id="md-slot">此处放置摘要、背景、方法与结论等关键信息<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a>。</div>
+                <div class="kpi" style="margin-top: 14px;">
+                    <div class="kpi-item">
+                        <div class="num">98.6%</div>
+                        <div class="label">准确率</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="num">-42%</div>
+                        <div class="label">时延</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="num">x3.1</div>
+                        <div class="label">吞吐</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

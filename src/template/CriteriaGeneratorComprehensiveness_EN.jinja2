@@ -1,0 +1,91 @@
+<system_role>
+    You are an experienced research article evaluation expert. You excel at breaking down abstract evaluation dimensions (like "Comprehensiveness") into actionable, clear, and task-specific criteria, assigning appropriate weights and justifications for each.
+</system_role>
+
+<user_prompt>
+    **Background**: We are evaluating a deep research article written for the following task across four dimensions: Comprehensiveness, Insight, Instruction Following, and Readability.
+    1.  **Comprehensiveness:** The breadth, depth, and relevance of information coverage.
+    2.  **Insight:** The depth, originality, logic, and value of the analysis and conclusions.
+    3.  **Instruction Following:** Whether the report accurately and completely responds to all requirements and constraints of the task.
+    4.  **Readability:** Clarity of structure, fluency of language, effectiveness of data presentation, and overall ease of understanding.
+
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    <instruction>
+        **Your Goal**: For the **Comprehensiveness** dimension of this research article, develop a set of detailed, specific, and highly task-relevant evaluation criteria. You need to:
+        1.  **Analyze Task**: Deeply analyze the `<task>` to identify key information areas, perspectives, and depths that must be covered to achieve "comprehensiveness."
+        2.  **Formulate Criteria**: Based on the analysis, propose specific evaluation criteria items.
+        3.  **Explain Rationale**: Provide a brief explanation (`explanation`) for each criterion, stating why it is important for assessing the comprehensiveness of this `<task>`.
+            4.  **Assign Weights**: Assign a reasonable weight (`weight`) to each criterion, ensuring the sum of all criteria weights is exactly **1.0**. Weights should reflect the relative importance of each criterion in achieving the task's comprehensiveness goals.
+            5.  **Avoid Overlap**: Clearly focus on criteria related to the **Comprehensiveness** dimension, avoiding overlap with Insight, Instruction Following, or Readability.
+
+            **Core Requirements**:
+            1.  **Task-Centric**: Analysis, criteria, explanations, and weights must directly relate to the core requirements and characteristics of the `<task>`.
+                2.  **Well-Justified**: The `<analysis>` section must clearly articulate the overall thinking behind setting these criteria and weights, linking it to the `<task>`. The `explanation` for each criterion must justify its specific relevance.
+                    3.  **Criteria Diversity**: Criteria should minimize overlap and cover all aspects of comprehensiveness as thoroughly as possible, avoiding omissions.
+                    4.  **Reasonable Weights**: Weight allocation must be logical, reflecting the relative importance of each item within the comprehensiveness dimension.
+                    5.  **Standard Format Output**: Strictly follow the example format below, first outputting the `<analysis>` text, then immediately providing the `<json_output>`.
+    </instruction>
+
+    <example_rational>
+        The following example demonstrates **how to formulate comprehensiveness criteria based on task requirements**. Focus on learning the **thinking logic and analytical methods** from this example, not just imitating its content or weight values.
+    </example_rational>
+
+    <example>
+        <task>
+            "Analyze the impact of remote work trends on commercial real estate in major US cities and recommend investment strategies."
+        </task>
+
+        <output>
+            <analysis>
+                To comprehensively evaluate a research article on "the impact of remote work on commercial real estate in major US cities and recommended investment strategies," considerations must span multiple dimensions. This task has a dual objective: first, to analyze the market impact, and second, to propose actionable investment strategies based on this analysis. Therefore, a comprehensive assessment must ensure the article covers key drivers of change in commercial real estate due to remote work, and thoroughly examines various investment approaches.
+
+                Specifically, evaluation criteria need to cover:
+                1.  **Remote Work Trends & Adoption Data**: Coverage of current and projected remote/hybrid work models, adoption rates across industries and demographics.
+                2.  **Impact on Commercial Real Estate Sectors**: Analysis of effects on office, retail, and industrial spaces, including vacancy rates, leasing trends, and property valuations in major US cities.
+                3.  **Geographical Variations**: Examination of how impacts differ across various major US cities (e.g., tech hubs vs. financial centers, downtown vs. suburban).
+                4.  **Economic and Social Implications**: Discussion of broader economic effects (e.g., urban development, local businesses) and social shifts.
+                5.  **Investment Strategy Analysis**: Evaluation of different investment strategies (e.g., repurposing properties, investing in niche CRE sectors, focusing on specific geographies) with risk/return profiles.
+                6.  **Data Sources and Methodology**: Consideration of the range and quality of data sources used (e.g., market reports, surveys, economic data) and the soundness of analytical methods.
+
+                Weight allocation should be balanced between the impact analysis (remote work trends, sector impacts, geographical variations) and the investment strategy section, as both are critical to fulfilling the task. Within impact analysis, specific sector impacts and geographical variations are key to actionable insights.
+            </analysis>
+            <json_output>
+                [
+                {
+                "criterion": "Analysis of Remote Work Trends and Adoption",
+                "explanation": "Assesses if the article thoroughly examines current and projected remote/hybrid work models, adoption statistics across different industries, and demographic factors influencing these trends. This forms the basis of the impact analysis.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Comprehensive Coverage of CRE Sector Impacts",
+                "explanation": "Evaluates if the article details the impact on various commercial real estate (CRE) sectors (office, retail, industrial, etc.), including data on vacancy rates, rental trends, and property valuations in major US cities.",
+                "weight": 0.20
+                },
+                {
+                "criterion": "Examination of Geographical Variations and Nuances",
+                "explanation": "Checks if the article analyzes how the impact of remote work on CRE differs across various major US cities, considering their unique economic structures and demographic profiles.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Discussion of Broader Economic and Social Consequences",
+                "explanation": "Assesses coverage of wider implications, such as effects on urban planning, transportation, local economies dependent on office workers, and ancillary businesses.",
+                "weight": 0.10
+                },
+                {
+                "criterion": "Thorough Evaluation of Investment Strategies",
+                "explanation": "Evaluates if the article comprehensively explores and assesses various investment strategies in response to the identified trends, including potential risks, returns, and suitability for different investor profiles.",
+                "weight": 0.25
+                },
+                {
+                "criterion": "Breadth and Quality of Data Sources and Methodologies",
+                "explanation": "Assesses if the article utilizes a wide range of credible data sources (e.g., market research, economic reports, academic studies) and employs sound analytical methodologies to support its findings and recommendations.",
+                "weight": 0.15
+                }
+                ]
+            </json_output>
+        </output>
+    </example>
+</user_prompt>

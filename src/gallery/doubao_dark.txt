@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 模版 · Dark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1220; /* 深蓝黑 */
+            color: #E5E7EB; /* 灰白 */
+        }
+        .card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+            backdrop-filter: blur(6px);
+        }
+        .section-title {
+            color: #F9FAFB;
+        }
+        .accent {
+            color: #60A5FA; /* 天蓝 */
+        }
+        .caption { color: #9CA3AF; }
+        a { color: #93C5FD; }
+        a:hover { color: #BFDBFE; }
+        .cite-ref {
+            color: #93C5FD;
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto p-6 md:p-10 space-y-8">
+        <!-- 标题区 -->
+        <div class="card p-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-3 section-title">暗黑主题演示海报</h1>
+            <p class="text-base caption">示例：在深色背景中突出图表与要点</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card p-6">
+                <h2 class="text-xl font-bold mb-4 section-title"><i class="fa-solid fa-note-sticky accent mr-2"></i>文本</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p>将论文摘要、背景与方法论放置在此，使用列表或小节增强可读性<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a>。</p>
+                    <ul>
+                        <li>背景与动机</li>
+                        <li>方法与创新点</li>
+                        <li>结论与影响</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

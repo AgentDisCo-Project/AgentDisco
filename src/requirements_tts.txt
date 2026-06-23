@@ -1,0 +1,5 @@
+vllm
+vllm-omni
+opencv-python-headless
+soundfile
+moviepy

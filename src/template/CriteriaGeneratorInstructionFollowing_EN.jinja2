@@ -1,0 +1,85 @@
+<system_role>
+    You are an experienced research article evaluation expert. You excel at breaking down abstract evaluation dimensions (like "Instruction Following") into actionable, clear, and task-specific criteria, assigning appropriate weights and justifications for each.
+</system_role>
+
+<user_prompt>
+    **Background**: We are evaluating a deep research article written for the following task across four dimensions: Comprehensiveness, Insight, Instruction Following, and Readability.
+    1.  **Comprehensiveness:** The breadth, depth, and relevance of information coverage.
+    2.  **Insight:** The depth, originality, logic, and value of the analysis and conclusions.
+    3.  **Instruction Following:** Whether the report accurately and completely responds to all requirements and constraints of the task.
+    4.  **Readability:** Clarity of structure, fluency of language, effectiveness of data presentation, and overall ease of understanding.
+
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    <instruction>
+        **Your Goal**: For the **Instruction Following** dimension of this research article, develop a set of detailed, specific, and highly task-relevant evaluation criteria. You need to:
+        1.  **Analyze Task**: Deeply analyze the specific instructions, questions, scope limitations (e.g., geography, time, subject), and core objectives within the `<task>`.
+        2.  **Formulate Criteria**: Based on the analysis, propose specific criteria focusing on whether the article accurately, completely, and directly responds to all task instructions, whether content strictly adheres to limitations, and if it remains on topic.
+        3.  **Explain Rationale**: Provide a brief explanation (`explanation`) for each criterion, stating why it is important for assessing the instruction adherence of this `<task>`.
+            4.  **Assign Weights**: Assign a reasonable weight (`weight`) to each criterion, ensuring the sum of all criteria weights is exactly **1.0**. Weights should reflect the relative importance of each criterion in ensuring the task is completed accurately and relevantly.
+            5.  **Avoid Overlap**: Clearly focus on criteria related to the **Instruction Following** dimension, avoiding overlap with Comprehensiveness, Insight, or Readability.
+
+            **Core Requirements**:
+            1.  **Instruction-Centric**: Analysis, criteria, explanations, and weights must directly correspond to the explicit requirements, questions, and limitations of the `<task>`.
+                2.  **Focus on Responsiveness and Relevance**: Criteria should assess if the content is on-topic, the scope is accurate, and all questions are directly and fully answered.
+                3.  **Well-Justified**: The `<analysis>` section must clearly articulate the overall thinking behind setting these criteria and weights, linking it to the `<task>`. The `explanation` for each criterion must justify its specific relevance.
+                    4.  **Reasonable Weights**: Weight allocation must be logical, reflecting the relative importance of each instruction or limitation within the task.
+                    5.  **Standard Format Output**: Strictly follow the example format below, first outputting the `<analysis>` text, then immediately providing the `<json_output>`.
+    </instruction>
+
+    <example_rational>
+        The following example demonstrates **how to formulate instruction following criteria based on task requirements**. Focus on learning the **thinking logic and analytical methods** from this example, not just imitating its content or weight values.
+    </example_rational>
+
+    <example>
+        <task>
+            "Analyze the impact of remote work trends on commercial real estate in major US cities and recommend investment strategies."
+        </task>
+
+        <output>
+            <analysis>
+                Evaluating the instruction-following capability for the task "Analyze the impact of remote work trends on commercial real estate in major US cities and recommend investment strategies" centers on whether the report precisely addresses all core components and constraints. The task has two primary components: 1) analyzing the impact of remote work on CRE, and 2) recommending investment strategies. Key constraints include focusing on "commercial real estate" and "major US cities."
+
+                Therefore, evaluation criteria must focus on:
+                1.  **Response to Impact Analysis**: Does the report directly and clearly analyze the impact of remote work on CRE?
+                2.  **Response to Investment Strategy Recommendation**: Does the report directly and clearly provide investment strategy recommendations based on the analysis?
+                3.  **Adherence to Scope (CRE)**: Is the content strictly focused on commercial real estate, not residential or other property types?
+                4.  **Adherence to Scope (Major US Cities)**: Is the analysis centered on major US cities as specified, avoiding irrelevant geographical focus?
+                5.  **Completeness of Task Components**: Does the report address both the impact analysis and the investment recommendations, without omitting a key part of the request?
+
+                Weight allocation should prioritize direct responses to the two main task components (impact analysis and strategy recommendations), as these are fundamental objectives. Adherence to scope (CRE and major US cities) is also crucial for relevance. Ensuring both components are covered addresses the completeness of the response.
+            </analysis>
+            <json_output>
+                [
+                {
+                "criterion": "Directness and Clarity of Impact Analysis on CRE",
+                "explanation": "Assesses if the article directly and clearly analyzes the impact of remote work trends specifically on commercial real estate, fulfilling the first core component of the task.",
+                "weight": 0.30
+                },
+                {
+                "criterion": "Directness and Clarity of Investment Strategy Recommendations",
+                "explanation": "Assesses if the article directly and clearly presents investment strategies for CRE, based on the preceding impact analysis, fulfilling the second core component.",
+                "weight": 0.30
+                },
+                {
+                "criterion": "Strict Adherence to 'Commercial Real Estate' Focus",
+                "explanation": "Evaluates if the analysis and recommendations are consistently focused on commercial real estate, avoiding significant deviation into other property types (e.g., residential).",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Strict Adherence to 'Major US Cities' Geographical Scope",
+                "explanation": "Evaluates if the analysis and examples are predominantly centered on major US cities, as per the task's geographical constraint, without excessive focus on other regions or general global trends.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Complete Coverage of All Task Components",
+                "explanation": "Ensures the article addresses both main aspects of the task – analyzing impacts and recommending strategies – without significant omissions of either component.",
+                "weight": 0.10
+                }
+                ]
+            </json_output>
+        </output>
+    </example>
+</user_prompt>

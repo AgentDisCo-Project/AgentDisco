@@ -1,0 +1,106 @@
+<system_role>
+    You are an experienced research article evaluation expert. You excel at breaking down abstract evaluation dimensions (like "Readability") into actionable, clear, and task-specific criteria, assigning appropriate weights and justifications for each.
+</system_role>
+
+<user_prompt>
+    **Background**: We are evaluating a deep research article written for the following task across four dimensions: Comprehensiveness, Insight, Instruction Following, and Readability.
+    1.  **Comprehensiveness:** The breadth, depth, and relevance of information coverage.
+    2.  **Insight:** The depth, originality, logic, and value of the analysis and conclusions.
+    3.  **Instruction Following:** Whether the report accurately and completely responds to all requirements and constraints of the task.
+    4.  **Readability:** Clarity of structure, fluency of language, effectiveness of data presentation, and overall ease of understanding.
+
+    <task>
+        "{{ user_question }}"
+    </task>
+
+    <instruction>
+        **Your Goal**: For the **Readability** dimension of this research article, develop a set of detailed, specific, and relatively general evaluation criteria, while also considering the characteristics of the `<task>`. You need to:
+        1.  **Analyze Readability Elements**: Identify key elements that constitute the readability of a high-quality research report, such as structural logic, language expression, information presentation, formatting, etc.
+        2.  **Formulate Criteria**: Based on the analysis, propose specific criteria covering:
+        *   Language clarity and correctness (sentences, terminology, wording, errors)
+        *   Content structure and logic (headings, paragraphs, introduction/conclusion, transitions)
+        *   Information presentation and density (key points, breakdown, organization, redundancy)
+        *   Data and visualization (data accuracy/clarity, use of charts/tables)
+        *   Formatting and layout (paragraphs, spacing, highlighting)
+        *   Audience adaptation (term explanation, expression style)
+        3.  **Explain Rationale**: Provide a brief explanation (`explanation`) for each criterion, stating why it is important for enhancing report readability and reader comprehension, potentially linking to the `<task>` type.
+            4.  **Assign Weights**: Assign a reasonable weight (`weight`) to each criterion, ensuring the sum of all criteria weights is exactly **1.0**. Weights should reflect the relative importance of each criterion to overall readability.
+            5.  **Avoid Overlap**: Clearly focus on criteria related to the **Readability** dimension, avoiding overlap with Comprehensiveness, Insight, or Instruction Following.
+
+            **Core Requirements**:
+            1.  **Cover Key Elements**: Criteria should systematically cover the main aspects affecting readability.
+            2.  **Clear and Actionable**: Each criterion should be specific, easy to understand, and assessable.
+            3.  **Well-Justified**: The `<analysis>` section must articulate the overall thinking behind these criteria and weights. The `explanation` for each criterion must justify its importance.
+                4.  **Reasonable Weights**: Weight allocation must be logical, reflecting the relative contribution of each item to readability.
+                5.  **Standard Format Output**: Strictly follow the example format below, first outputting the `<analysis>` text, then immediately providing the `<json_output>`.
+    </instruction>
+
+    <example_rational>
+        The following example demonstrates **how to formulate readability criteria**. Focus on learning the **thinking logic and analytical methods** from this example, not just imitating its content or weight values. While readability criteria are generally applicable, weight allocation can be slightly adjusted based on the task type.
+    </example_rational>
+
+    <example>
+        <task>
+            "Analyze the impact of remote work trends on commercial real estate in major US cities and recommend investment strategies."
+        </task>
+
+        <output>
+            <analysis>
+                Evaluating the readability of a report on "the impact of remote work on commercial real estate (CRE) in major US cities and recommended investment strategies" requires ensuring that complex market analysis and investment comparisons are easily understood by the reader. While readability standards are generally applicable, for a task involving market analysis, data, and strategic recommendations, a clear structure, precise language, and intuitive data presentation are particularly crucial.
+
+                Evaluation criteria should cover:
+                1.  **Structural Logic**: Does the article have a clear framework guiding the reader from market analysis to impact assessment and finally to investment strategies?
+                2.  **Language and Terminology**: Is the language fluent and accurate? Is technical CRE and financial terminology used appropriately and explained where necessary?
+                3.  **Paragraph Organization**: Are paragraphs focused and transitions smooth, facilitating easy following of the argumentation?
+                4.  **Information Presentation**: Is key information highlighted? Is data presented clearly, with appropriate use of charts and tables to illustrate trends and comparisons?
+                5.  **Formatting and Layout**: Is the overall layout clean and conducive to sustained reading without fatigue?
+
+                Weight allocation should give the highest importance to structural clarity, as it's fundamental to understanding complex analyses. The accuracy of language and professional terminology is also vital for effective information transfer. For a data-intensive task like this, the presentation of data and visuals significantly contributes to readability. Other aspects like paragraph organization and formatting serve as support for a good reading experience.
+            </analysis>
+            <json_output>
+                [
+                {
+                "criterion": "Overall Article Structure and Logical Flow",
+                "explanation": "Assesses if the article has a clear logical structure (e.g., introduction, market overview, impact analysis, strategy recommendations, conclusion), with distinct heading levels, effectively guiding the reader through complex information.",
+                "weight": 0.25
+                },
+                {
+                "criterion": "Clarity, Precision, and Professionalism of Language",
+                "explanation": "Evaluates if the language is fluent, grammatically correct, free of jargon where possible, and uses precise terminology; technical terms (e.g., cap rate, NOI, Class A/B/C office space) are used correctly and explained if necessary.",
+                "weight": 0.20
+                },
+                {
+                "criterion": "Paragraph Cohesion and Transitions",
+                "explanation": "Assesses if each paragraph focuses on a single idea, and if transitions between paragraphs and sections are smooth and logical, aiding comprehension.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Clarity and Accuracy of Data Presentation",
+                "explanation": "Evaluates if data cited (e.g., vacancy rates, rental growth, investment volumes) is presented clearly, accurately, and sourced appropriately (if applicable), making it easy to understand.",
+                "weight": 0.15
+                },
+                {
+                "criterion": "Effective Use of Visualizations (Charts, Tables)",
+                "explanation": "Assesses if charts, graphs, and tables are used effectively to illustrate trends, comparisons, or complex data, and if they are well-designed, clearly labeled, and easy to interpret.",
+                "weight": 0.10
+                },
+                {
+                "criterion": "Highlighting of Key Information and Summaries",
+                "explanation": "Assesses if the article effectively uses formatting (e.g., bolding, bullet points) or summary sections to highlight key findings, conclusions, and recommendations.",
+                "weight": 0.05
+                },
+                {
+                "criterion": "Formatting, Layout, and Overall Presentation",
+                "explanation": "Evaluates if the document's layout, font choices, spacing, and general visual presentation are professional and enhance readability, reducing reader fatigue.",
+                "weight": 0.05
+                },
+                {
+                "criterion": "Audience Appropriateness",
+                "explanation": "Assesses if the level of detail, terminology, and explanations are appropriate for the intended audience (e.g., investors, industry professionals).",
+                "weight": 0.05
+                }
+                ]
+            </json_output>
+        </output>
+    </example>
+</user_prompt>

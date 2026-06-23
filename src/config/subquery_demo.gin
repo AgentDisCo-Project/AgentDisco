@@ -1,0 +1,43 @@
+run_subquery.job_name = "subquery_demo"
+run_subquery.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache/生活类_健康养生.jsonl"
+run_subquery.output_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache/0908_生活类_健康养生_subquery_out.jsonl"
+run_subquery.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_subquery.download_dir = "/mnt/tidal-alsh01/dataset/video_agent_data/cache"
+run_subquery.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+run_subquery.use_query_modality = "text"
+run_subquery.use_note_modality = "text"
+
+run_subquery.skip_entry_judge = False
+run_subquery.skip_query_generation = False
+run_subquery.skip_search = False
+run_subquery.skip_download_data = False
+run_subquery.skip_score_note = False
+
+run_subquery.disable_entry_judge = False
+run_subquery.disable_query_generation = False
+run_subquery.disable_search_note = False
+run_subquery.disable_comment = False
+run_subquery.disable_video = False
+
+run_subquery.num_samples = 5
+run_subquery.image_key_type = "path"
+run_subquery.require_download_data = True
+
+EntryJudge.model_name = "qwen2.5-72b-instruct"
+# EntryJudge.model_name = "deepseek-r1-0528"
+NoteJudge.model_name = "qwen2.5-72b-instruct"
+# NoteJudge.model_name = "deepseek-r1-0528"
+NoteJudge.max_concurrent = 5
+
+QuerySynthesis.model_name = "qwen2.5-72b-instruct"
+# QuerySynthesis.model_name = "deepseek-r1-0528"
+RedNoteTextSearch.num_searches = 10
+RedImageSearch.num_searches = 10
+BochaSearch.num_searches = 10
+
+NoteReranker.need_chunk = False
+NoteReranker.chunk_size = 256
+NoteReranker.max_num_chunks_per_request = 1
+NoteReranker.use_chunk_size = 300
+NoteReranker.need_overlap = False
+NoteReranker.need_remove_empty_notes = True

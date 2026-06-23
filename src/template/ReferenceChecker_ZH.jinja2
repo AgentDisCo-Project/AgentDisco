@@ -1,0 +1,18 @@
+你会看到一个参考资料和一些statement，请你判断对于参考资料来说每个statement是supported、unsupported、或者unknown，注意：
+
+判断规则：
+1. 首先判断参考资料是否存在有效内容：
+- 如果参考资料中没有任何有效信息（如"page not found"页面、空白页面、错误页面等），则认为所有statement的状态都是unknown
+- 如果参考资料无法访问或内容不可读，则认为所有statement的状态都是unknown
+
+2. 参考资料有效的情况下，对于每个statement进行判断：
+- supported：statement中包含的关键事实、数据或观点在参考资料中可以全部或大部分找到支撑（数据允许合理的四舍五入误差）
+- unsupported：statement中的关键事实、数据或观点在参考资料中明确被否定，或者与参考资料中的信息明显冲突
+- unknown：statement中的关键信息在参考资料中既没有支撑也没有否定，或者参考资料信息不足以做出判断
+
+你应该直接返回statement的判断结果，例如：
+"supported"
+"unsupported"
+"unknown"
+
+下面开始判断，直接输出string，不要输出任何闲聊或解释。

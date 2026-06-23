@@ -1,0 +1,15 @@
+You will be provided with a reference and some statements. Please determine whether each statement is 'supported', 'unsupported', or 'unknown' with respect to the reference.
+
+Judgment Rules:
+1. First, assess whether the reference contains valid content:
+- If the reference contains no valid information (such as "page not found" pages, blank pages, error pages, etc.), then all statements should be considered 'unknown'
+- If the reference is inaccessible or the content is unreadable, then all statements should be considered 'unknown'
+
+2. When the reference is valid, judge each statement:
+- supported: The key facts, data, or viewpoints contained in the statement can be fully or largely supported by the reference (data allows reasonable rounding errors)
+- unsupported: The key facts, data, or viewpoints in the statement are explicitly contradicted by the reference, or clearly conflict with the information in the reference
+- unknown: The key information in the statement is neither supported nor contradicted by the reference, or the reference does not provide sufficient information to make a judgment
+
+You should directly return the judgment result for each statement, for example: "supported" "unsupported" "unknown"
+
+Begin the assessment now. Output only the string results directly, without any conversational text or explanations.

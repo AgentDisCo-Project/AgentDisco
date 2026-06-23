@@ -1,0 +1,5 @@
+run_note_judge.job_name = "note_judge_demo"
+run_note_judge.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/data/search_agent_demo.jsonl"
+run_note_judge.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+run_note_judge.download_dir = "/mnt/tidal-alsh01/dataset/video_agent_data/cache"
+run_note_judge.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster 模版 · Minimal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --fg: #1f2937;
+            --muted: #6b7280;
+            --card: #ffffff;
+            --border: #e5e7eb;
+            --accent: #111827;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 32px;
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+            background: var(--bg); color: var(--fg);
+        }
+        .container { max-width: 1180px; margin: 0 auto; }
+        .title { font-size: 40px; font-weight: 800; margin: 0 0 6px; }
+        .subtitle { color: var(--muted); margin: 0 0 24px; }
+        .grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 20px; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+        }
+        h2 { font-size: 18px; margin: 0 0 12px; color: var(--accent); }
+        .caption { color: var(--muted); font-size: 12px; margin-top: 6px; }
+        ol { padding-left: 18px; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .cite-ref {
+            color: #2563eb;
+            font-size: 0.75em;
+            text-decoration: none;
+            font-weight: 600;
+            vertical-align: super;
+        }
+        .cite-ref:hover { text-decoration: underline; }
+        @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">[论文/项目标题]</h1>
+        <p class="subtitle">[副标题或一句话摘要]</p>
+
+        <div class="grid">
+            <div class="card">
+                <h2>主要内容</h2>
+                <p>在此处放置核心文本，如摘要、方法介绍等<a class="cite-ref" href="https://example.com/source" target="_blank">[1]</a>。</p>
+            </div>
+            <div class="card">
+                <h2>图表与数据</h2>
+                <p>在此处插入关键图表或数据统计。</p>
+            </div>
+            <div class="card">
+                <h2>结论</h2>
+                <p>在此处总结研究成果与未来展望。</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

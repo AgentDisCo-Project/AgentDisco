@@ -1,0 +1,12 @@
+eval_workflow.job_name = "0225_EVAL_GEMINI_TEST"
+
+eval_workflow.input_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/samples/deep_consult_en_6_2333_QA_AGENT_GEMINI_GOOGLE_BATCH_BLUEPRINT_EN_PART6_1_20260313_123820_output.json"
+eval_workflow.input_reference_report_path = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/benchmark/deep_consult_en_refereneces"
+eval_workflow.cache_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/cache"
+eval_workflow.log_dir = "/mnt/tidalfs-bdsz01/usr/tusen/search-agent-dev/logs"
+
+eval_workflow.need_pairwise = True
+eval_workflow.use_zh = False
+eval_workflow.require_cache_data = True
+
+ConsultScoreGenerator.model_name = "gpt-4.1"
